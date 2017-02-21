@@ -276,7 +276,7 @@ class SampleTest(unittest.TestCase):
     def test500_040_Algorithm(self):
         mysample = SM.Sample(self.nominalN)
         highbound = 15
-        self.assertAlmostEqual(mysample.integrate(0.0, highbound, mysample.getN(), mysample.f), 1.33, 3)
+        self.assertAlmostEqual(mysample.integrate(0.0, highbound, mysample.getN(), mysample.f), 1.33, 2)
 
 
 
