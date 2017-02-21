@@ -75,7 +75,7 @@ class Sample(object):
             simpsonNew = w/3
 
             sum = 0.0
-            for (i in range (s+1)):
+            for i in range (s+1):
                 if (i==0)
 
                 elif(i == s)
