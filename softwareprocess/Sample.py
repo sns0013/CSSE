@@ -65,7 +65,7 @@ class Sample(object):
         return result
     
     def integrate(self, lowBound, highBound, n, f):
-
+        u = lowBound
         result = f(u, n)
 
         return .5
