@@ -272,3 +272,5 @@ class SampleTest(unittest.TestCase):
         def f(u,n):
             return u**2
         self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .33, 2)
+
+

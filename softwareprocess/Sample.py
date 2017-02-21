@@ -65,10 +65,26 @@ class Sample(object):
         return result
     
     def integrate(self, lowBound, highBound, n, f):
-        u = lowBound
-        result = f(u, n)
+        epsilon = 0.001
+        simpsonOld = 0.0
+        simpsonNew = epsilon
+        s = 4
+        while(abs((simpsonNew - simpsonOld) / simpsonNew) > epsilon):
+            simpsonOld = simpsonNew
+            w = (highBound - lowBound) / s
+            simpsonNew = w/3
 
-        return .33
+            sum = 0.0
+            for (i in range (s+1)):
+                if (i==0)
+
+                elif(i == s)
+
+                else
+
+            s = s * 2
+
+        return
         
         
     
