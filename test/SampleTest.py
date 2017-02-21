@@ -247,11 +247,7 @@ class SampleTest(unittest.TestCase):
 #Happy path
 #   easy intergral: constant from 0 to 1
 #   easy non constant integral: u from 0 to 1
-#   above from 0 to 10
 #   polynomial integral: u^2 from 0 to 1
-#   above from 0 to 10
-#   constant (1/n) * quadratic: .5 * u^2 from 0 to 1
-#   self.f from 0 to 10
 #Sad path
 #   none t, n, f is prevalidated
 
@@ -268,5 +264,11 @@ class SampleTest(unittest.TestCase):
         t = 1.0
         def f(u,n):
             return u
-
         self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .5, 2)
+
+    def test500_030_Poly
+        mysample = SM.Sample(self.nominalN)
+        t = 1.0
+        def f(u,n):
+            return u**2
+        self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .33, 2)
