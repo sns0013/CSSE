@@ -265,7 +265,7 @@ class SampleTest(unittest.TestCase):
 
     def test500_020_SingleVariable(self):
         mysample = SM.Sample(self.nominalN)
-         t = 1.0
+        t = 1.0
         def f(u,n):
             return u
 
