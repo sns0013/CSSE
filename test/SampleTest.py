@@ -255,7 +255,7 @@ class SampleTest(unittest.TestCase):
 #Sad path
 #   none t, n, f is prevalidated
 
-    def test500_010_S(self):
+    def test500_010_Constant(self):
         mysample = SM.Sample(self.nominalN)
         t = 1.0
         def f(u,n):
@@ -263,3 +263,10 @@ class SampleTest(unittest.TestCase):
 
         self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), 10, 2)
 
+    def test500_020_SingleVariable(self):
+        mysample = SM.Sample(self.nominalN)
+         t = 1.0
+        def f(u,n):
+            return u
+
+        self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .5, 2)
