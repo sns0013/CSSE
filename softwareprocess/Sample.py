@@ -68,7 +68,7 @@ class Sample(object):
         u = lowBound
         result = f(u, n)
 
-        return .5
+        return .33
         
         
     
