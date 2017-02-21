@@ -76,11 +76,11 @@ class Sample(object):
 
             sum = 0.0
             for i in range (s+1):
-                if (i==0)
+                if (i==0):
 
-                elif(i == s)
+                elif(i == s):
 
-                else
+                else:
 
             s = s * 2
 
