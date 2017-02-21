@@ -248,6 +248,7 @@ class SampleTest(unittest.TestCase):
 #   easy intergral: constant from 0 to 1
 #   easy non constant integral: u from 0 to 1
 #   polynomial integral: u^2 from 0 to 1
+#   integral using simpsons algorithm
 #Sad path
 #   none t, n, f is prevalidated
 
@@ -274,9 +275,9 @@ class SampleTest(unittest.TestCase):
         self.assertAlmostEquals(mysample.integrate(0.0, highbound, mysample.getN(), f), .33, 2)
 
     def test500_040_Algorithm(self):
-        mysample = SM.Sample(self.nominalN)
+        mysample = SM.Sample(8)
         highbound = 15
-        self.assertAlmostEqual(mysample.integrate(0.0, highbound, mysample.getN(), mysample.f), 1.33, 2)
+        self.assertAlmostEqual(mysample.integrate(0.0, highbound, mysample.getN(), mysample.f), 1.57, 2)
 
 
 
