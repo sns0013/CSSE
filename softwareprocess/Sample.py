@@ -72,19 +72,25 @@ class Sample(object):
         while(abs((simpsonNew - simpsonOld) / simpsonNew) > epsilon):
             simpsonOld = simpsonNew
             w = (highBound - lowBound) / s
-            simpsonNew = w/3
 
-            sum = 0.0
+            integralSum = 0.0
             for i in range (s+1):
                 if (i==0):
-
+                    integralSum += f(lowBound, n)
                 elif(i == s):
-
+                    integralSum += f(highBound, n)
                 else:
+                    inputU = lowBound + (i * w)
 
+                    if(i%2 == 1):
+                        integralSum += (2 * f(inputU, n))
+                    else:
+                        integralSum += (4 * f(inputU, n))
+
+            simpsonNew = (w/3) * integralSum
             s = s * 2
 
-        return
+        return simpsonNew
         
         
     

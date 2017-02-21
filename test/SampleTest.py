@@ -253,24 +253,31 @@ class SampleTest(unittest.TestCase):
 
     def test500_010_Constant(self):
         mysample = SM.Sample(self.nominalN)
-        t = 1.0
+        highbound = 1.0
         def f(u,n):
             return 10
 
-        self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), 10, 2)
+        self.assertAlmostEquals(mysample.integrate(0.0, highbound, mysample.getN(), f), 10, 2)
 
     def test500_020_SingleVariable(self):
         mysample = SM.Sample(self.nominalN)
-        t = 1.0
+        highbound = 1.0
         def f(u,n):
             return u
-        self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .5, 2)
+        self.assertAlmostEquals(mysample.integrate(0.0, highbound, mysample.getN(), f), .5, 2)
 
     def test500_030_Poly(self):
         mysample = SM.Sample(self.nominalN)
-        t = 1.0
+        highbound = 1.0
         def f(u,n):
             return u**2
-        self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .33, 2)
+        self.assertAlmostEquals(mysample.integrate(0.0, highbound, mysample.getN(), f), .33, 2)
+
+    def test500_040_Algorithm(self):
+        mysample = SM.Sample(self.nominalN)
+        highbound = 15
+        self.assertAlmostEqual(mysample.integrate(0.0, highBound, mysample.getN(), f), 1.33, 2)
+
+
 
 
