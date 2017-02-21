@@ -90,7 +90,7 @@ class Sample(object):
             simpsonNew = (w/3) * integralSum
             s = s * 2
 
-        return simpsonNew
+        return round(simpsonNew, 3)
         
         
     
