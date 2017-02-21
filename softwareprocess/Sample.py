@@ -83,14 +83,14 @@ class Sample(object):
                     inputU = lowBound + (i * w)
 
                     if(i%2 == 1):
-                        integralSum += (2 * f(inputU, n))
-                    else:
                         integralSum += (4 * f(inputU, n))
+                    else:
+                        integralSum += (2 * f(inputU, n))
 
             simpsonNew = (w/3) * integralSum
             s = s * 2
 
-        return round(simpsonNew, 3)
+        return simpsonNew
         
         
     
