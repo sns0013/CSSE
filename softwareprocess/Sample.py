@@ -68,7 +68,7 @@ class Sample(object):
         u = highBound
         result = f(u, n)
 
-        return
+        return result
         
         
     
