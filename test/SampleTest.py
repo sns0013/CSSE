@@ -238,17 +238,28 @@ class SampleTest(unittest.TestCase):
 #500 integrate
 #Analysis
 #   inputs
-#       lowBound
-#       highBound
-#       n
-#       f
+#       lowBound -> 0.0
+#       highBound -> t numeric manditory validated
+#       n ->        numeric manditory validated
+#       f ->        method manditory validated
 #   ouputs
 #
 #Happy path
-#   nominal case
+#   easy intergral: constant from 0 to 1
+#   easy non constant integral: u from 0 to 1
+#   above from 0 to 10
+#   polynomial integral: u^2 from 0 to 1
+#   above from 0 to 10
+#   constant (1/n) * quadratic: .5 * u^2 from 0 to 1
+#   self.f from 0 to 10
 #Sad path
-#
+#   none t, n, f is prevalidated
 
     def test500_010_S(self):
         mysample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mysample.integrate(0.0, 1, 4, f))
+        t = 1.0
+        def f(u,n)
+            return 10
+
+        self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), 10, 2)
+
