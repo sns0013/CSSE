@@ -266,7 +266,7 @@ class SampleTest(unittest.TestCase):
             return u
         self.assertAlmostEquals(mysample.integrate(0.0, t, mysample.getN(), f), .5, 2)
 
-    def test500_030_Poly
+    def test500_030_Poly(self):
         mysample = SM.Sample(self.nominalN)
         t = 1.0
         def f(u,n):
