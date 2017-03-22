@@ -159,17 +159,40 @@ class DispatchTest(unittest.TestCase):
 #
 #
 # Happy path
-    def test200_010_ShouldAccept_NominalValueHeight(self):
+    def test300_010_ShouldAccept_NominalValueTemperature(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test300_020_ShouldAccept_LowBoundTemperature(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'-20'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test300_030_ShouldAccept_HighBoundTemperature(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'120'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test300_040_ShouldAccept_MissingTemperature(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
-
-    def test200_020_ShouldAccept_LowBoundHeight(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'0'}
-        result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
 # Sad path
+    def test300_910_ShouldAddError_InvalidValueTemperature(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'a'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
+    def test300_920_ShoulAddError_LowOutOfBoundTemperature(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'-21'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test300_930_ShouldAddError_HighOutOfBoundTemperature(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'121'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 # 400 Pressure
 #    Desired level of confidence:    boundary value analysis
 #    Input-output Analysis
