@@ -101,7 +101,7 @@ def adjust(values):
     defaultHorizon = 'natural'
     if 'horizon' in values:
         horizon = values['horizon']
-        if(not(horizon.lower() == 'natural') or not(horizon.lower() == 'artificial')):
+        if(not(horizon.lower() == 'natural')):
             values['error'] = 'Horizon is invalid'
             return values
     else:
