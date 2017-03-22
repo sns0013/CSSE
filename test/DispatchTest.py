@@ -304,11 +304,52 @@ class DispatchTest(unittest.TestCase):
 # 600 Adjust
 #    Desired level of confidence:    boundary value analysis
 #    Input-output Analysis
-#        inputs:
+#        inputs: observation validated
+#                height validated
+#                temperature validated
+#                pressure validated
+#                horizon validated
+#        calculates:dip if horizon = natural dip = ((-.97) * sqrt(height))/60
+#                          horizon = artificial dip = 0
+#                   refraction
+#                   altitude : rounded and needed in a certain format
+#
 #        outputs:    values
 #    Happy path analysis:
-#
+#       correct value for all calculations
 #    Sad path analysis:
-#
+#       Altitude already exists in values
 # Happy path
-# Sad path
+    def test600_010_CalculateDipFromNatural(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        result = DP.dispatch(sighting)
+        height = result['height']
+        programDip = result['altitude']
+        calculatedDip = ((-.97) * math.sqrt(int(height))) / 60
+        self.assertEquals(programDip, calculatedDip)
+
+    def test600_020_CalculatesDipFromArtificial(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        result = DP.dispatch(sighting)
+        programDip = result['altitude']
+        calculatedDip = 0
+        self.assertEquals(programDip, calculatedDip)
+
+    def test600_030_CalculateRefraction(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        result = DP.dispatch(sighting)
+        programRefraction = result['altitude']
+        calculatedRefraction = 0
+        self.assertEquals(programRefraction, calculatedRefraction)
+
+    def test600_040_CalculateAltitude(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        result = DP.dispatch(sighting)
+        calculatedAltitude = 0
+        self.assertEquals(result['altitude'], calculatedAltitude)
+
+#Sad Path
+    def test600_910_AltitudeAlreadyPresent(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural', 'Altitude':'60d25.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
