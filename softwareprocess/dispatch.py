@@ -1,5 +1,4 @@
-def dispatch(self, values=None):
-    self.values = values
+def dispatch(values=None):
     #Validate parm
     if(values == None):
         return {'error': 'parameter is missing'}
@@ -20,3 +19,31 @@ def dispatch(self, values=None):
     else:
         values['error'] = 'op is not a legal operation'
         return values
+
+def adjust(values):
+    if(not['observation' in values])
+        values['error'] = 'Observation is missing'
+        return
+
+    observation = values['observation']
+
+    if(not('d' in observation)):
+        values['error'] = 'Observation is invalid'
+        return
+
+    observationSplit = observation.split('d')
+    observationX = int(observationSplit[0])
+    observationYY = float(observationSplit[1])
+
+    if(observationX < 0 or observationX > 89)
+        values['error'] = 'Observation is invalid'
+        return
+
+    if(observationYY < 0.0 or observationYY > 59.9):
+        values['error'] = 'Observation is invalid'
+        return
+
+
+
+
+
