@@ -119,27 +119,27 @@ class DispatchTest(unittest.TestCase):
     def test200_010_ShouldAccept_NominalValueHeight(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue(not 'error' in result)
 
     def test200_020_ShouldAccept_LowBoundHeight(self):
         sighting = {'op':'adjust', 'observation':'0d1.5', 'height':'0'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue(not 'error' in result)
 
     def test200_030_ShouldAccept_MissingHeight(self):
         sighting = {'op':'adjust', 'observation':'60d20.5'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue(not 'error' in result)
 # Sad path
     def test200_910_ShouldAddError_NonIntHeight(self):
         sighting = {'op':'adjust', 'observation':'0d1.5', 'height':'a'}
         result = DP.dispatch(sighting)
-        self.assertTrue = ('error' in result)
+        self.assertTrue('error' in result)
 
     def test200_920_ShouldAddError_OutOfBoundsHeight(self):
         sighting = {'op':'adjust', 'observation':'60d20.5', 'height':-1}
         result = DP.dispatch(sighting)
-        self.assertTrue = ('error' in result)
+        self.assertTrue('error' in result)
 # 300 Temperature
 #    Desired level of confidence:    boundary value analysis
 #    Input-output Analysis
