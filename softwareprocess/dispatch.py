@@ -1,5 +1,5 @@
-def dispatch(values=None):
-
+def dispatch(self, values=None):
+    self.values = values
     #Validate parm
     if(values == None):
         return {'error': 'parameter is missing'}
@@ -8,8 +8,7 @@ def dispatch(values=None):
     if (not('op' in values)):
         values['error'] = 'no op  is specified'
         return values
-
-    #Perform designated function
+        #Perform designated function
     if(values['op'] == 'adjust'):
         return values    #<-------------- replace this with your implementation
     elif(values['op'] == 'predict'):

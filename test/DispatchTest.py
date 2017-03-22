@@ -4,11 +4,6 @@ import math
 
 class DispatchTest(unittest.TestCase):
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
 
 # -----------------------------------------------------------------------
 # ---- Acceptance Tests
@@ -38,12 +33,70 @@ class DispatchTest(unittest.TestCase):
 #                     missing angle
 #
 # Happy path
-    def 100_010_ShouldAccept NominalValue(self):
-        sighting = {'op':'adjust'}
+    def test100_010_ShouldAccept_NominalValueX(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5'}
         result = DP.dispatch(sighting)
-        self.assert_ = (not 'error' in result)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_020_ShouldAccept_LowBoundX(self):
+        sighting = {'op':'adjust', 'observation':'0d1.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_030_ShouldAccept_HighBoundX(self):
+        sighting = {'op':'adjust', 'observation':'89d1.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_010_ShouldAccept_NominalValueX(self):
+        sighting = {'op':'adjust', 'observation':'60d45.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_040_ShouldAccept_LowBoundYY(self):
+        sighting = {'op':'adjust', 'observation':'60d0.0'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_050_ShouldAccept_HighBoundYY(self):
+        sighting = {'op':'adjust', 'observation':'60d59.9'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_060_ShouldAccept_CorrectFormat(self):
+        sighting = {'op':'adjust', 'observation':'30d1.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
 
 # Sad path
+    def test100_070_ShouldAddError_UnformattedAngle(self):
+        sighting = {'op':'adjust', 'observation':'5650.9'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_080_ShouldAddError_OutOfBoundsX(self):
+        sighting = {'op':'adjust', 'observation':'-1d1.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_090_ShouldAddError_OutOfBoundX(self):
+        sighting = {'op':'adjust', 'observation':'90d1.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_100_ShouldAddError_NominalValueX(self):
+        sighting = {'op':'adjust', 'observation':'60d-1'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_110_ShouldAddError_OutOfBoundYY(self):
+        sighting = {'op':'adjust', 'observation':'60d60.0'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test100_120_ShouldAddError_MissingAngle(self):
+        sighting = {'op':'adjust', 'observation':''}
+        result = DP.dispatch(sighting)
 
 # 200 Height
 #    Desired level of confidence:    boundary value analysis
