@@ -139,8 +139,7 @@ def calculateRefraction(pressure, temperature, observation):
     observationSplit = observation.split('d')
     observationX = int(observationSplit[0])
     observationYY = float(observationSplit[1])
-    obsMinutes = observationYY/60
-    obsDegrees = observationX + obsMinutes
+    obsDegrees = observationX + observationYY / 60
     refraction = (-0.00452 * int(pressure)) / (273 + celcius) / math.tan(obsDegrees)
 
     return refraction
