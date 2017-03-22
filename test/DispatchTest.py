@@ -178,6 +178,7 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
+        self.assertEquals(result['temperature'], '72')
 # Sad path
     def test300_910_ShouldAddError_InvalidValueTemperature(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'a'}
