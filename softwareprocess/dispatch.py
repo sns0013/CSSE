@@ -50,7 +50,7 @@ def adjust(values):
         values['height'] = defaultHeight
         return
     else:
-        if(type(int(values['height'])) = int):
+        if(type(int(values['height'])) == int):
             values['error'] = 'Height is invalid'
             return values
 
