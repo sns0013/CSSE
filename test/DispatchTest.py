@@ -321,11 +321,11 @@ class DispatchTest(unittest.TestCase):
 #       Altitude already exists in values
 # Happy path
     def test600_010_CalculateDipFromNatural(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        sighting = {'op':'adjust', 'observation':'45d15.2', 'height':'6', 'temperature':'71', 'pressure':'1010', 'horizon':'Natural'}
         result = DP.dispatch(sighting)
         height = result['height']
         programDip = DP.calculateDip(result['horizon'], int(height))
-        calculatedDip = ((-.97) * math.sqrt(int(height))) / 60
+        calculatedDip = -0.039600084
         self.assertEquals(programDip, calculatedDip)
 
     def test600_020_CalculatesDipFromArtificial(self):
