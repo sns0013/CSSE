@@ -106,7 +106,7 @@ def adjust(values):
             values['error'] = 'Horizon is invalid'
             return values
     else:
-        values['horizon'] = defaultPressure
+        values['horizon'] = defaultHorizon
 
 
 
