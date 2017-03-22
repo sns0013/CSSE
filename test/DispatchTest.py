@@ -284,17 +284,17 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue(not 'error' in result)
         self.assertEquals(result['horizon'], 'natural')
 
-# Sad path
-    def test500_910_ShouldAddError_LowBoundCasedHorizon(self):
+    def test500_040_ShouldAddError_LowBoundCasedHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
         result = DP.dispatch(sighting)
-        self.assertTrue('error' in result)
+        self.assertTrue(not 'error' in result)
 
-    def test500_920_ShouldAddError_HighBoundCasedHorizon(self):
+    def test500_050_ShouldAddError_HighBoundCasedHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
         result = DP.dispatch(sighting)
-        self.assertTrue('error' in result)
+        self.assertTrue(not 'error' in result)
 
+# Sad path
     def test500_930_ShouldAddError_NonStringHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'123'}
         result = DP.dispatch(sighting)
