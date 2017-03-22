@@ -72,17 +72,17 @@ class DispatchTest(unittest.TestCase):
     def test100_910_ShouldAddError_UnformattedAngle(self):
         sighting = {'op':'adjust', 'observation':'5650.9'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue = ('error' in result)
 
     def test100_920_ShouldAddError_OutOfBoundsX(self):
         sighting = {'op':'adjust', 'observation':'-1d1.5'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue = ('error' in result)
 
     def test100_930_ShouldAddError_OutOfBoundX(self):
         sighting = {'op':'adjust', 'observation':'90d1.5'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue = ('error' in result)
 
     def test100_940_ShouldAddError_NominalValueX(self):
         sighting = {'op':'adjust', 'observation':'60d-1'}
@@ -92,7 +92,7 @@ class DispatchTest(unittest.TestCase):
     def test100_950_ShouldAddError_OutOfBoundYY(self):
         sighting = {'op':'adjust', 'observation':'60d60.0'}
         result = DP.dispatch(sighting)
-        self.assertTrue = (not 'error' in result)
+        self.assertTrue = ('error' in result)
 
     def test100_960_ShouldAddError_MissingAngle(self):
         sighting = {'op':'adjust', 'observation':''}
