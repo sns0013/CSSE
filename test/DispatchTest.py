@@ -48,53 +48,53 @@ class DispatchTest(unittest.TestCase):
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_010_ShouldAccept_NominalValueX(self):
+    def test100_040_ShouldAccept_NominalValueX(self):
         sighting = {'op':'adjust', 'observation':'60d45.5'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_040_ShouldAccept_LowBoundYY(self):
+    def test100_050_ShouldAccept_LowBoundYY(self):
         sighting = {'op':'adjust', 'observation':'60d0.0'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_050_ShouldAccept_HighBoundYY(self):
+    def test100_060_ShouldAccept_HighBoundYY(self):
         sighting = {'op':'adjust', 'observation':'60d59.9'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_060_ShouldAccept_CorrectFormat(self):
+    def test100_070_ShouldAccept_CorrectFormat(self):
         sighting = {'op':'adjust', 'observation':'30d1.5'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
 # Sad path
-    def test100_070_ShouldAddError_UnformattedAngle(self):
+    def test100_910_ShouldAddError_UnformattedAngle(self):
         sighting = {'op':'adjust', 'observation':'5650.9'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_080_ShouldAddError_OutOfBoundsX(self):
+    def test100_920_ShouldAddError_OutOfBoundsX(self):
         sighting = {'op':'adjust', 'observation':'-1d1.5'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_090_ShouldAddError_OutOfBoundX(self):
+    def test100_930_ShouldAddError_OutOfBoundX(self):
         sighting = {'op':'adjust', 'observation':'90d1.5'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_100_ShouldAddError_NominalValueX(self):
+    def test100_940_ShouldAddError_NominalValueX(self):
         sighting = {'op':'adjust', 'observation':'60d-1'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_110_ShouldAddError_OutOfBoundYY(self):
+    def test100_950_ShouldAddError_OutOfBoundYY(self):
         sighting = {'op':'adjust', 'observation':'60d60.0'}
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 
-    def test100_120_ShouldAddError_MissingAngle(self):
+    def test100_960_ShouldAddError_MissingAngle(self):
         sighting = {'op':'adjust', 'observation':''}
         result = DP.dispatch(sighting)
 
@@ -115,6 +115,20 @@ class DispatchTest(unittest.TestCase):
 #
 # Happy path
 
+    def test200_010_ShouldAccept_NominalValueHeight(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test200_020_ShouldAccept_LowBoundHeight(self):
+        sighting = {'op':'adjust', 'observation':'0d1.5', 'height':'0'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
+
+    def test200_030_ShouldAccept_MissingHeight(self):
+        sighting = {'op':'adjust', 'observation':'60d20.5'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = (not 'error' in result)
 # Sad path
 
 # 300 Temperature
