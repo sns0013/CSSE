@@ -49,16 +49,16 @@ def adjust(values):
     if(not['height' in values]):
         values['height'] = defaultHeight
         return
+    else:
+        if(not[isinstance(int(values['height']), int)]):
+            values['error'] = 'Height is invalid'
+            return values
 
-    if(not[isinstance(int(values['height']), int)]):
-        values['error'] = 'Height is invalid'
-        return values
-    
-    height = int(values['height'])
+        height = int(values['height'])
 
-    if(height < 0):
-        values['error'] = 'Height is invalid'
-        return values
+        if(height < 0):
+            values['error'] = 'Height is invalid'
+            return values
 
 
 
