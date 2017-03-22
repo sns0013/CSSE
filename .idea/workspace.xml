@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="803ca225-9b69-4685-8db1-4fe24693eecf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/softwareprocess/dispatch.py" afterPath="$PROJECT_DIR$/softwareprocess/dispatch.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/DispatchTest.py" afterPath="$PROJECT_DIR$/test/DispatchTest.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,17 +32,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dispatch.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dispatch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/softwareprocess/dispatch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DispatchTest.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DispatchTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/DispatchTest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
@@ -74,8 +73,8 @@
         <option value="$PROJECT_DIR$/softwareprocess/Sample.py" />
         <option value="$PROJECT_DIR$/test/SampleTest.py" />
         <option value="$PROJECT_DIR$/lambda/lambda_function.py" />
-        <option value="$PROJECT_DIR$/softwareprocess/dispatch.py" />
         <option value="$PROJECT_DIR$/test/DispatchTest.py" />
+        <option value="$PROJECT_DIR$/softwareprocess/dispatch.py" />
       </list>
     </option>
   </component>
@@ -415,9 +414,6 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests_(TDD) - 2017.03.22 at 06h 37m 22s.xml">
-      <configuration name="All Tests (TDD)" configurationId="tests" />
-    </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.03.22 at 06h 51m 02s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
@@ -443,6 +439,9 @@
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.03.22 at 07h 00m 24s.xml">
+      <configuration name="All Tests (TDD)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="All_Tests_(TDD) - 2017.03.22 at 08h 19m 01s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
   </component>
@@ -608,14 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/softwareprocess/dispatch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/DispatchTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -623,6 +614,14 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/softwareprocess/dispatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="55" column="4" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
