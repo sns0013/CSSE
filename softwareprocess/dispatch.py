@@ -124,7 +124,7 @@ def adjust(values):
     calculateRefraction(pressure, temperature, observation)
 
 def convertToCelcius(temperature):
-    celcius = (temperature - 32) * 5/9
+    celcius = (int(temperature) - 32) * 5/9
     return celcius
 
 def calculateDip(horizon, height):
