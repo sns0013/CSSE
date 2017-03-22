@@ -245,7 +245,7 @@ class DispatchTest(unittest.TestCase):
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test400_930_ShouldAddErrort_HighOutofBoundPressure(self):
+    def test400_930_ShouldAddError_HighOutofBoundPressure(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'1101'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
@@ -268,5 +268,34 @@ class DispatchTest(unittest.TestCase):
 #
 #
 # Happy path
+    def test500_010_ShouldAccept_LowBoundHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'natural'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test500_020_ShouldAccept_HighBoundHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'artificial'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test500_020_ShouldAccept_missingHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+        self.assertEquals(result['horizon'], 'natural')
 
 # Sad path
+    def test500_010_ShouldAddError_LowBoundCasedHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test500_020_ShouldAddError_HighBoundCasedHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test500_020_ShouldAddError_NonStringHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'123'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
