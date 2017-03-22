@@ -45,7 +45,7 @@ def adjust(values):
         return values
 
 
-    defaultHeight = 0
+    defaultHeight = '0'
     if(not['height' in values]):
         values['height'] = defaultHeight
         return

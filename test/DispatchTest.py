@@ -122,7 +122,7 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue(not 'error' in result)
 
     def test200_020_ShouldAccept_LowBoundHeight(self):
-        sighting = {'op':'adjust', 'observation':'0d1.5', 'height':'0'}
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'0'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
@@ -132,7 +132,7 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue(not 'error' in result)
 # Sad path
     def test200_910_ShouldAddError_NonIntHeight(self):
-        sighting = {'op':'adjust', 'observation':'0d1.5', 'height':'a'}
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'a'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
