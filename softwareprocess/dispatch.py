@@ -75,7 +75,7 @@ def adjust(values):
             values['error'] = 'Temperature is invalid'
             return values
 
-        temperature = values['temperature']
+        temperature = int(values['temperature'])
         if(temperature < -20 or temperature > 120):
             values['error'] = 'Temperature is invalid'
             return values
