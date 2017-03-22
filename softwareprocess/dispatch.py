@@ -1,3 +1,5 @@
+import math
+
 def dispatch(values=None):
     #Validate parm
     if(values == None):
@@ -108,8 +110,24 @@ def adjust(values):
     else:
         values['horizon'] = defaultHorizon
 
+    if 'altitude' in values
+        values['error'] = 'Altitude is already present'
+
+    horizon = values['horizon']
+    height = values['height']
+    aDip = calculateDip(horizon, height)
 
 
+def convertToCelcius(temperature):
+    celcius = (temperature - 32) * 5/9
+    return celcius
+
+def calculateDip(horizon, height):
+    if horizon.tolower() == 'natural':
+        dip = ((-.97) * math.sqrt(int(height))) / 60
+    else:
+        dip = 0
+    return dip
 
 
 
