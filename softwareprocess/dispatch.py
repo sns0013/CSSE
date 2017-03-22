@@ -66,21 +66,21 @@ def adjust(values):
     else:
         values['height'] = defaultHeight
 
-    # defaultTemperature = '72'
-    # if 'temperature' in values:
-    #     try:
-    #         temperature = values['temperature']
-    #         int(temperature)
-    #     except ValueError:
-    #         values['error'] = 'Temperature is invalid'
-    #         return values
-    #
-    #     temperature = values['temperature']
-    #     if(temperature < -20 or temperature > 120):
-    #         values['error'] = 'Temperature is invalid'
-    #         return values
-    # else:
-    #     values['temperature'] = defaultTemperature
+    defaultTemperature = '72'
+    if 'temperature' in values:
+        try:
+            temperature = values['temperature']
+            int(temperature)
+        except ValueError:
+            values['error'] = 'Temperature is invalid'
+            return values
+
+        temperature = values['temperature']
+        if(temperature < -20 or temperature > 120):
+            values['error'] = 'Temperature is invalid'
+            return values
+    else:
+        values['temperature'] = defaultTemperature
 
 
 
