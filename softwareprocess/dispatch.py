@@ -9,6 +9,7 @@ def dispatch(values=None):
         return values
         #Perform designated function
     if(values['op'] == 'adjust'):
+        adjust(values)
         return values    #<-------------- replace this with your implementation
     elif(values['op'] == 'predict'):
         return values    #This calculation is stubbed out

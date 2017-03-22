@@ -131,7 +131,15 @@ class DispatchTest(unittest.TestCase):
         result = DP.dispatch(sighting)
         self.assertTrue = (not 'error' in result)
 # Sad path
+    def test200_910_ShouldAddError_NonIntHeight(self):
+        sighting = {'op':'adjust', 'observation':'0d1.5', 'height':'a'}
+        result = DP.dispatch(sighting)
+        self.assertTrue = ('error' in result)
 
+    def test200_920_ShouldAddError_OutOfBoundsHeight(self):
+        sighting = {'op':'adjust', 'observation':'60d20.5', 'height':-1}
+        result = DP.dispatch(sighting)
+        self.assertTrue = ('error' in result)
 # 300 Temperature
 #    Desired level of confidence:    boundary value analysis
 #    Input-output Analysis
