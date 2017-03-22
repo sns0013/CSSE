@@ -35,7 +35,7 @@ def adjust(values):
     observationX = int(observationSplit[0])
     observationYY = float(observationSplit[1])
 
-    if(observationX < 0 or observationX > 89)
+    if(observationX < 0 or observationX > 89):
         values['error'] = 'Observation is invalid'
         return
 
