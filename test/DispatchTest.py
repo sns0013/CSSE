@@ -354,6 +354,6 @@ class DispatchTest(unittest.TestCase):
 
 #Sad Path
     def test600_910_AltitudeAlreadyPresent(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural', 'Altitude':'60d25.5'}
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural', 'altitude':'60d25.5'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
