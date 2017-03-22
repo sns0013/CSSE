@@ -123,7 +123,7 @@ def convertToCelcius(temperature):
     return celcius
 
 def calculateDip(horizon, height):
-    if horizon.tolower() == 'natural':
+    if horizon.lower() == 'natural':
         dip = ((-.97) * math.sqrt(int(height))) / 60
     else:
         dip = 0
