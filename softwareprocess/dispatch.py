@@ -102,7 +102,7 @@ def adjust(values):
     if 'horizon' in values:
 
         horizon = values['horizon']
-        if(not[horizon =='natural' or horizon == 'artificial']):
+        if(not[horizon.lower() =='natural' or horizon.lower() == 'artificial']):
             values['error'] = 'Horizon is invalid'
             return values
     else:
