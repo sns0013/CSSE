@@ -66,10 +66,6 @@ def adjust(values):
     else:
         values['height'] = defaultHeight
 
-    if(not['height' in values]):
-
-
-    else:
 
 
 

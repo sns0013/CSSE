@@ -159,7 +159,15 @@ class DispatchTest(unittest.TestCase):
 #
 #
 # Happy path
+    def test200_010_ShouldAccept_NominalValueHeight(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
+    def test200_020_ShouldAccept_LowBoundHeight(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'0'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 # Sad path
 
 # 400 Pressure
