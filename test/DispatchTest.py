@@ -235,20 +235,20 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue(not 'error' in result)
         self.assertEquals(result['pressure'], '1010')
 # Sad path
-    def test400_010_ShouldAddError_NonIntPressure(self):
+    def test400_910_ShouldAddError_NonIntPressure(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'b'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
 
-    def test400_020_ShouldAddError_LowOutOfBoundPressure(self):
+    def test400_920_ShouldAddError_LowOutOfBoundPressure(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'99'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
 
-    def test400_030_ShouldAddErrort_HighOutofBoundPressure(self):
+    def test400_930_ShouldAddErrort_HighOutofBoundPressure(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'1101'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
 
 # 500 Horizon
 #    Desired level of confidence:    boundary value analysis
