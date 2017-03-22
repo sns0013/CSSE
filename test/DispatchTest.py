@@ -272,7 +272,7 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'natural'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
-        self.assertEquals(results['horizon'], 'natural')
+        self.assertEquals(result['horizon'], 'natural')
 
     def test500_020_ShouldAccept_HighBoundHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'artificial'}
