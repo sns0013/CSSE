@@ -52,7 +52,7 @@ def adjust(values):
     if 'height' in values:
 
         try:
-            height = values[height]
+            height = values['height']
             int(height)
         except ValueError:
             values['error'] = 'Height is invalid'
