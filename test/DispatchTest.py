@@ -326,7 +326,7 @@ class DispatchTest(unittest.TestCase):
         height = result['height']
         programDip = DP.calculateDip(result['horizon'], int(height))
         calculatedDip = -0.039600084
-        self.assertEquals(programDip, calculatedDip)
+        self.assertEquals(round(programDip, 9), calculatedDip)
 
     def test600_020_CalculatesDipFromArtificial(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
