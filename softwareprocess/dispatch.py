@@ -96,7 +96,7 @@ def adjust(values):
             values['error'] = 'Pressure is invalid'
             return values
     else:
-        values['Pressure'] = defaultPressure
+        values['pressure'] = defaultPressure
 
 
 
