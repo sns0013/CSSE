@@ -55,7 +55,7 @@ def adjust(values):
 
         try:
             height = values['height']
-            int(height)
+            long(height)
         except ValueError:
             values['error'] = 'Height is invalid'
             return values
@@ -112,11 +112,16 @@ def adjust(values):
 
     if 'altitude' in values:
         values['error'] = 'Altitude is already present'
+        return values
 
     horizon = values['horizon']
     height = values['height']
     aDip = calculateDip(horizon, height)
 
+    pressure = values['pressure']
+    temperature = values['temperature']
+    observation = values['observation']
+    calculateRefraction(pressure, temperature, observation)
 
 def convertToCelcius(temperature):
     celcius = (temperature - 32) * 5/9
@@ -124,10 +129,21 @@ def convertToCelcius(temperature):
 
 def calculateDip(horizon, height):
     if horizon.lower() == 'natural':
-        dip = ((-.97) * math.sqrt(int(height))) / 60
+        dip = ((-.97) * math.sqrt(long(height))) / 60
     else:
         dip = 0
     return dip
+
+def calculateRefraction(pressure, temperature, observation):
+    celcius = convertToCelcius(temperature)
+    observationSplit = observation.split('d')
+    observationX = int(observationSplit[0])
+    observationYY = float(observationSplit[1])
+    obsMinutes = observationYY/60
+    obsDegrees = observationX + obsMinutes
+    refraction = (-0.00452 * int(pressure))/(273 + celcius) / math.tan(obsDegrees)
+
+    return refraction
 
 
 

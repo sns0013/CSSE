@@ -329,7 +329,7 @@ class DispatchTest(unittest.TestCase):
         self.assertEquals(programDip, calculatedDip)
 
     def test600_020_CalculatesDipFromArtificial(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
         result = DP.dispatch(sighting)
         height = result['height']
         programDip = DP.calculateDip(result['horizon'], int(height))
@@ -339,7 +339,10 @@ class DispatchTest(unittest.TestCase):
     def test600_030_CalculateRefraction(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
         result = DP.dispatch(sighting)
-        programRefraction = result['altitude']
+        pressure = result['pressure']
+        temperature = result['temperature']
+        observation = result['observation']
+        programRefraction = DP.calculateRefraction(pressure, temperature, observation)
         calculatedRefraction = 0
         self.assertEquals(programRefraction, calculatedRefraction)
 
