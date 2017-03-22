@@ -71,7 +71,7 @@ def adjust(values):
         try:
             temperature = values['temperature']
             int(temperature)
-        except
+        except:
             values['error'] = 'Temperature is invalid'
             return values
 
