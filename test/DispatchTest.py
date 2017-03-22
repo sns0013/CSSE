@@ -348,7 +348,7 @@ class DispatchTest(unittest.TestCase):
         self.assertEquals(0, math.tan(45 + (15.2/60)))
 
     def test600_040_CalculateAltitude(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        sighting = {'op':'adjust', 'observation':'45d15.2', 'height':'6', 'temperature':'71', 'pressure':'1010', 'horizon':'Natural'}
         result = DP.dispatch(sighting)
         calculatedAltitude = 0
         self.assertEquals(result['altitude'], calculatedAltitude)
