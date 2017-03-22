@@ -140,6 +140,7 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'adjust', 'observation':'60d20.5', 'height':'-1'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
+
 # 300 Temperature
 #    Desired level of confidence:    boundary value analysis
 #    Input-output Analysis
