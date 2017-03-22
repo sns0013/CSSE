@@ -195,6 +195,7 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'121'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
+
 # 400 Pressure
 #    Desired level of confidence:    boundary value analysis
 #    Input-output Analysis
@@ -212,8 +213,42 @@ class DispatchTest(unittest.TestCase):
 #                     out-of-bounds pressure    pressure=99; pressure=1101
 #
 # Happy path
+    def test400_010_ShouldAccept_NominalValuePressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
+    def test400_020_ShouldAccept_LowBoundPressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'100'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test400_030_ShouldAccept_HighBoundPressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'1100'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+        self.assertEquals(result['pressure'], '1100')
+
+    def test400_040_ShouldAccept_MissingPressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+        self.assertEquals(result['pressure'], '1010')
 # Sad path
+    def test400_010_ShouldAddError_NonIntPressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'b'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test400_020_ShouldAddError_LowOutOfBoundPressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'99'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test400_030_ShouldAddErrort_HighOutofBoundPressure(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'1101'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
 # 500 Horizon
 #    Desired level of confidence:    boundary value analysis
