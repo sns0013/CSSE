@@ -278,24 +278,24 @@ class DispatchTest(unittest.TestCase):
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
-    def test500_020_ShouldAccept_missingHorizon(self):
+    def test500_030_ShouldAccept_missingHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
         self.assertEquals(result['horizon'], 'natural')
 
 # Sad path
-    def test500_010_ShouldAddError_LowBoundCasedHorizon(self):
+    def test500_910_ShouldAddError_LowBoundCasedHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test500_020_ShouldAddError_HighBoundCasedHorizon(self):
+    def test500_920_ShouldAddError_HighBoundCasedHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test500_020_ShouldAddError_NonStringHorizon(self):
+    def test500_930_ShouldAddError_NonStringHorizon(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'123'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)

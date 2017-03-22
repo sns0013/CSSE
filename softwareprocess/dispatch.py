@@ -98,6 +98,15 @@ def adjust(values):
     else:
         values['pressure'] = defaultPressure
 
+    defaultHorizon = 'natural'
+    if 'horizon' in values:
+
+        horizon = values['horizon']
+        if(not[horizon =='natural' or horizon == 'artificial']):
+            values['error'] = 'Horizon is invalid'
+            return values
+    else:
+        values['horizon'] = defaultPressure
 
 
 
