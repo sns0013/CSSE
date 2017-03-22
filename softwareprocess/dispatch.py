@@ -21,7 +21,7 @@ def dispatch(values=None):
         return values
 
 def adjust(values):
-    if(not['observation' in values])
+    if(not['observation' in values]):
         values['error'] = 'Observation is missing'
         return
 
