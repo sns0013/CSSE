@@ -91,7 +91,7 @@ def adjust(values):
             values['error'] = 'Pressure is invalid'
             return values
 
-        pressure = int(values['Pressure'])
+        pressure = int(values['pressure'])
         if(pressure < 100 or pressure > 1100):
             values['error'] = 'Pressure is invalid'
             return values
