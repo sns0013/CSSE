@@ -110,7 +110,7 @@ def adjust(values):
     else:
         values['horizon'] = defaultHorizon
 
-    if 'altitude' in values
+    if 'altitude' in values:
         values['error'] = 'Altitude is already present'
 
     horizon = values['horizon']
