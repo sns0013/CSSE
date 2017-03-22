@@ -66,7 +66,7 @@ def adjust(values):
     else:
         values['height'] = defaultHeight
 
-    defaultTemperature = '72';
+    defaultTemperature = '72'
     if 'height' in values:
         try:
             temperature = values['temperature']
