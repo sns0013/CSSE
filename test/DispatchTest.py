@@ -137,7 +137,7 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue('error' in result)
 
     def test200_920_ShouldAddError_OutOfBoundsHeight(self):
-        sighting = {'op':'adjust', 'observation':'60d20.5', 'height':-1}
+        sighting = {'op':'adjust', 'observation':'60d20.5', 'height':'-1'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 # 300 Temperature

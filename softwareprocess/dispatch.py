@@ -24,13 +24,13 @@ def dispatch(values=None):
 def adjust(values):
     if(not['observation' in values]):
         values['error'] = 'Observation is missing'
-        return
+        return values
 
     observation = values['observation']
 
     if(not('d' in observation)):
         values['error'] = 'Observation is invalid'
-        return
+        return values
 
     observationSplit = observation.split('d')
     observationX = int(observationSplit[0])
@@ -38,11 +38,29 @@ def adjust(values):
 
     if(observationX < 0 or observationX > 89):
         values['error'] = 'Observation is invalid'
-        return
+        return values
 
     if(observationYY < 0.0 or observationYY > 59.9):
         values['error'] = 'Observation is invalid'
+        return values
+
+
+    defaultHeight = 0
+    if(not['height' in values]):
+        values['height'] = defaultHeight
         return
+
+    height = int(values['height'])
+    if(not[isinstance(height, int)]):
+        values['error'] = 'Height is invalid'
+        return values
+
+    if(height < 0)
+        values['error'] = 'Height is invalid'
+        return values
+
+
+
 
 
 
