@@ -82,6 +82,21 @@ def adjust(values):
     else:
         values['temperature'] = defaultTemperature
 
+    defaultPressure = '1010'
+    if 'pressure' in values:
+        try:
+            pressure = values['pressure']
+            int(pressure)
+        except ValueError:
+            values['error'] = 'Pressure is invalid'
+            return values
+
+        temperature = int(values['Pressure'])
+        if(pressure < 100 or pressure > 1100):
+            values['error'] = 'Pressure is invalid'
+            return values
+    else:
+        values['Pressure'] = defaultPressure
 
 
 
