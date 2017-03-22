@@ -173,6 +173,7 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'120'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
+        self.assertEquals(result['temperature'], '120')
 
     def test300_040_ShouldAccept_MissingTemperature(self):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60'}
