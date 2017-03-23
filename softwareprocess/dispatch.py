@@ -24,11 +24,8 @@ def dispatch(values=None):
         return values
 
 def adjust(values):
-
-
     if 'observation' in values:
         observation = values['observation']
-
         if(not('d' in observation)):
             values['error'] = 'Observation is invalid'
             return values
@@ -48,11 +45,8 @@ def adjust(values):
         values['error'] = 'Observation is missing'
         return values
 
-
     defaultHeight = '0'
-
     if 'height' in values:
-
         try:
             height = values['height']
             long(height)
@@ -61,7 +55,6 @@ def adjust(values):
             return values
 
         height = int(values['height'])
-
         if(height < 0):
             values['error'] = 'Height is invalid'
             return values
@@ -106,7 +99,6 @@ def adjust(values):
         if(not(horizon.lower() == 'natural' or horizon.lower() == 'artificial')):
             values['error'] = 'Horizon is invalid'
             return values
-
     else:
         values['horizon'] = defaultHorizon
 
@@ -154,7 +146,3 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     obsDegrees = observationX + observationYY / 60
     adjustedAltitude = obsDegrees + aRefraction + aDip
     return adjustedAltitude
-
-
-
-
