@@ -125,7 +125,7 @@ def adjust(values):
     altitude = calculateAdjustedAltitude(aDip, aRefraction, observation)
     splitAltitude = altitude.split('.')
     formatedAltitude = '%d'(splitAltitude[0]) + 'd' + '%2.1f'(splitAltitude[1] * 60)
-    values['altitude'] = formatedAltitude
+    values['altitude'] = str(altitude)
 
 def convertToCelcius(temperature):
     celcius = (int(temperature) - 32) * (5.0/9.0)
