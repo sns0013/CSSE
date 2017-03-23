@@ -84,7 +84,7 @@ def adjust(values):
 
     defaultPressure = '1010'
     if 'pressure' in values:
-    pressure = values['pressure']
+        pressure = values['pressure']
 
         try:
             pressure = values['pressure']
