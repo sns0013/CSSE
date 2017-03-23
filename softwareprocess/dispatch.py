@@ -24,6 +24,8 @@ def dispatch(values=None):
         return values
 
 def adjust(values):
+
+
     if 'observation' in values:
         observation = values['observation']
         if(not('d' in observation)):
@@ -47,6 +49,7 @@ def adjust(values):
 
     defaultHeight = '0'
     if 'height' in values:
+        height = values['height']
         try:
             height = values['height']
             long(height)
@@ -58,11 +61,13 @@ def adjust(values):
         if(height < 0):
             values['error'] = 'Height is invalid'
             return values
+
     else:
-        values['height'] = defaultHeight
+        height = defaultHeight
 
     defaultTemperature = '72'
     if 'temperature' in values:
+        temperature = values['temperature']
         try:
             temperature = values['temperature']
             int(temperature)
@@ -75,10 +80,12 @@ def adjust(values):
             values['error'] = 'Temperature is invalid'
             return values
     else:
-        values['temperature'] = defaultTemperature
+        temperature = defaultTemperature
 
     defaultPressure = '1010'
     if 'pressure' in values:
+    pressure = values['pressure']
+
         try:
             pressure = values['pressure']
             int(pressure)
@@ -91,7 +98,7 @@ def adjust(values):
             values['error'] = 'Pressure is invalid'
             return values
     else:
-        values['pressure'] = defaultPressure
+        pressure = defaultPressure
 
     defaultHorizon = 'natural'
     if 'horizon' in values:
@@ -100,19 +107,15 @@ def adjust(values):
             values['error'] = 'Horizon is invalid'
             return values
     else:
-        values['horizon'] = defaultHorizon
+        horizon = defaultHorizon
 
     if 'altitude' in values:
         values['error'] = 'Altitude is already present'
         return values
 
-    horizon = values['horizon']
-    height = values['height']
+
     aDip = calculateDip(horizon, height)
 
-    pressure = values['pressure']
-    temperature = values['temperature']
-    observation = values['observation']
     aRefraction = calculateRefraction(pressure, temperature, observation)
     altitude = calculateAdjustedAltitude(aDip, aRefraction, observation)
     splitAltitude = str(altitude).split('.')
