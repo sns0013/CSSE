@@ -121,7 +121,11 @@ def adjust(values):
     pressure = values['pressure']
     temperature = values['temperature']
     observation = values['observation']
-    calculateRefraction(pressure, temperature, observation)
+    aRefraction = calculateRefraction(pressure, temperature, observation)
+    altitude = calculateAdjustedAltitude(aDip, aRefraction, observation)
+    splitAltitude = altitude.split('.')
+    formatedAltitude = '%d'(splitAltitude[0]) + 'd' + '%2.1f'(splitAltitude[1] * 60)
+    values['altitude'] = formatedAltitude
 
 def convertToCelcius(temperature):
     celcius = (int(temperature) - 32) * (5.0/9.0)
@@ -140,11 +144,16 @@ def calculateRefraction(pressure, temperature, observation):
     observationX = int(observationSplit[0])
     observationYY = float(observationSplit[1])
     obsDegrees = observationX + observationYY / 60
-
     refraction = (-0.00452 * int(pressure)) / (273 + celcius) / math.tan(math.radians(obsDegrees))
-
     return refraction
 
+def calculateAdjustedAltitude(aDip, aRefraction, observation):
+    observationSplit = observation.split('d')
+    observationX = int(observationSplit[0])
+    observationYY = float(observationSplit[1])
+    obsDegrees = observationX + observationYY / 60
+    adjustedAltitude = obsDegrees + aRefraction + aDip
+    return adjustedAltitude
 
 
 
