@@ -344,13 +344,8 @@ class DispatchTest(unittest.TestCase):
         observation = result['observation']
         programRefraction = DP.calculateRefraction(pressure, temperature, observation)
         calculatedRefraction = -0.015356
-        observation = result['observation']
-        observationSplit = observation.split('d')
-        observationX = int(observationSplit[0])
-        observationYY = float(observationSplit[1])
-        totalO = observationX + (observationYY / 60)
-        #self.assertEquals(round(programRefraction, 6), calculatedRefraction)
-        self.assertEquals(0, totalO)
+        self.assertEquals(round(programRefraction, 6), calculatedRefraction)
+
 
     def test600_040_CalculateAltitude(self):
         sighting = {'op':'adjust', 'observation':'45d15.2', 'height':'6', 'temperature':'71', 'pressure':'1010', 'horizon':'Natural'}
