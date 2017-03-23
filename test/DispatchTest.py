@@ -350,7 +350,7 @@ class DispatchTest(unittest.TestCase):
     def test600_040_CalculateAltitude(self):
         sighting = {'op':'adjust', 'observation':'45d15.2', 'height':'6', 'temperature':'71', 'pressure':'1010', 'horizon':'Natural'}
         result = DP.dispatch(sighting)
-        calculatedAltitude = 45.198333
+        calculatedAltitude = '45d11.9'
         self.assertEquals(result['altitude'], calculatedAltitude)
 
 #Sad Path
