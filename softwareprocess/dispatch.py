@@ -124,7 +124,7 @@ def adjust(values):
     aRefraction = calculateRefraction(pressure, temperature, observation)
     altitude = calculateAdjustedAltitude(aDip, aRefraction, observation)
     splitAltitude = str(altitude).split('.')
-    formatedAltitude = '%d'(int(splitAltitude[0])) + 'd' + '%2.1f'(float(splitAltitude[1] * 60))
+    formatedAltitude = '%d'%(int(splitAltitude[0])) + 'd' + '%2.1f'%(float(splitAltitude[1] * 60))
     values['altitude'] = formatedAltitude
 
 def convertToCelcius(temperature):
