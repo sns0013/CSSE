@@ -235,10 +235,11 @@ def predict(values):
 
 def CalculateCumProg(date):
     referenceYear = 2001
+    decrease = 14.31667 / 60
     dateSplit = date.split('-')
     year = int(dateSplit[0])
     difference = int(year) - referenceYear
-    progress = difference * 14.31667
+    progress = difference * decrease
     return progress
 
 def CalculateLeapProg(date):
