@@ -153,6 +153,10 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     return adjustedAltitude
 
 def predict(values):
+    if 'latitude' or 'longitude' in values:
+        values['error'] = "Lat and Long cannot be in dictionary"
+        return values
+
     if 'body' in values:
         starValues = SC.getStar(values['body'])
         if starValues == 'error':
@@ -162,7 +166,7 @@ def predict(values):
             starValues = starValues.split(',')
             sideRealAngle = starValues[0]
             declination = starValues[1]
-
+            values['latitude'] = declination
     else:
         values['error'] = "Body is missing"
 

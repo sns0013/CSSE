@@ -553,4 +553,18 @@ class DispatchTest(unittest.TestCase):
 # Happy path
 
 # Sad path
+    def test1000_010_ShouldAddError_LatandLong(self):
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'latitude':'7d24.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test1000_010_ShouldAddError_LatandLong(self):
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'longitude':'7d24.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test1000_010_ShouldAddError_LatandLong(self):
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'latitude':'7d24.3', 'longitude':'7d24.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
