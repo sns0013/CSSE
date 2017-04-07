@@ -267,12 +267,15 @@ def observationRotation(date, time):
 
     dateDiff = (star - aries)
     dateDiff = dateDiff.total_seconds()
+    fractRot = dateDiff / EarthRotational
+    fractRot = str(fractRot).split('.')
 
-    return dateDiff / EarthRotational * 360
+
+    return  int(fractRot[1]) * 360
 
 
-def calculateGHA(AriesGHA, SHA):
-    
+#def calculateGHA(AriesGHA, SHA):
+
 
 
 
