@@ -610,8 +610,7 @@ class DispatchTest(unittest.TestCase):
 
     def test1000_080_format(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
-        self.assertTrue(False)
+        result = DP.dispatch(sighting)
+        self.assertEquals(result['longitude'], '75d53.6')
 
-    def test1000_090_longitude(self):
-        sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
-        self.assertTrue(False)
+
