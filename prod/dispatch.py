@@ -238,7 +238,7 @@ def predict(values):
     minutes = (GHA - degrees) * 60
     formatLongitude = '%d'%(degrees % 360) + 'd' + '%.1f'%(minutes)
 
-    values['longitude'] = formatLongitude + " " + minutes
+    values['longitude'] = formatLongitude + " " + str(minutes)
     return values
 
 
