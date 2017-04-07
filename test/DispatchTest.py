@@ -410,7 +410,7 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'predict', 'body':'betelgeuse'}
         starValues = SC.getStar(sighting['body'])
         starValues.split(',')
-        sideRealAngle = str(starValues[0])
+        sideRealAngle = starValues[0]
         self.assertEquals('270d59.1', sideRealAngle)
 
 

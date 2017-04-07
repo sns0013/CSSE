@@ -9,6 +9,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/softwareprocess/dispatch.py" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/softwareprocess/lambda_function.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prod/StarCatalog.py" afterPath="$PROJECT_DIR$/prod/StarCatalog.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/DispatchTest.py" afterPath="$PROJECT_DIR$/test/DispatchTest.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,21 +36,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StarCatalog.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StarCatalog.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/prod/StarCatalog.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+              <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DispatchTest.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DispatchTest.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/DispatchTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="413" column="38" lean-forward="true" selection-start-line="413" selection-start-column="38" selection-end-line="413" selection-end-column="38" />
+            <state relative-caret-position="285">
+              <caret line="412" column="36" lean-forward="false" selection-start-line="412" selection-start-column="36" selection-end-line="412" selection-end-column="36" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -91,8 +92,8 @@
         <option value="$PROJECT_DIR$/softwareprocess/prod/dispatch.py" />
         <option value="$PROJECT_DIR$/prod/stars_catalog.py" />
         <option value="$PROJECT_DIR$/prod/dispatch.py" />
-        <option value="$PROJECT_DIR$/test/DispatchTest.py" />
         <option value="$PROJECT_DIR$/prod/StarCatalog.py" />
+        <option value="$PROJECT_DIR$/test/DispatchTest.py" />
       </list>
     </option>
   </component>
@@ -494,12 +495,6 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests_(TDD) - 2017.04.07 at 05h 32m 31s.xml">
-      <configuration name="All Tests (TDD)" configurationId="tests" />
-    </history-entry>
-    <history-entry file="All_Tests_(TDD) - 2017.04.07 at 08h 31m 54s.xml">
-      <configuration name="All Tests (TDD)" configurationId="tests" />
-    </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.04.07 at 09h 13m 23s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
@@ -522,6 +517,12 @@
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.04.07 at 09h 32m 40s.xml">
+      <configuration name="All Tests (TDD)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="All_Tests_(TDD) - 2017.04.07 at 09h 34m 41s.xml">
+      <configuration name="All Tests (TDD)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="All_Tests_(TDD) - 2017.04.07 at 09h 35m 22s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
   </component>
@@ -756,21 +757,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/DispatchTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="413" column="38" lean-forward="true" selection-start-line="413" selection-start-column="38" selection-end-line="413" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prod/StarCatalog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/DispatchTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="412" column="36" lean-forward="false" selection-start-line="412" selection-start-column="36" selection-end-line="412" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

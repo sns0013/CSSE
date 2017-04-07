@@ -1,5 +1,5 @@
 StarCatalog = {
-    'alpheratz':'357d41.7,29d10.9',
+    'alpheratz':'357d41.7:29d10.9',
     'ankaa':'353d14.1,-42d13.4',
     'schedar':'349d38.4,56d37.7',
     'diphda':'348d54.1,-17d54.1',
@@ -15,7 +15,7 @@ StarCatalog = {
     'bellatrix':'278d29.8,6d21.6',
     'elnath':'278d10.1,28d37.1',
     'alnilam':'275d44.3,-1d11.8',
-    'betelgeuse':'270d59.1,7d24.3',
+    'betelgeuse':'270d59.1:7d24.3',
     'canopus': '263d54.8,-52d42.5',
     'sirius': '258d31.7,-16d44.3',
     'adara': '255d10.8,-28d59.9',
