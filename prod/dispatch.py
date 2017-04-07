@@ -253,7 +253,7 @@ def CalculateLeapProg(date):
     return leapProg
 
 def PMRotation(cumProg, leapProg):
-    GHAAries = 6042.6
+    GHAAries = 100.71
     pmRot = GHAAries - cumProg + leapProg
     return pmRot
 
