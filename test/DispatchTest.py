@@ -587,7 +587,7 @@ class DispatchTest(unittest.TestCase):
     def test1000_060_observationRot(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         observedRot = DP.observationRotation(sighting['date'], sighting['time'])
-        self.assertEquals(round(observedRot, 1) , 3889.7)
+        self.assertEquals(observedRot , 3889.7)
 
     def test1000_070_total(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
