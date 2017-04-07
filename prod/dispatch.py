@@ -263,8 +263,11 @@ def CalculateLeapProg(date):
     return formatDegrees(leapProg)
 
 def PMRotation(cumProg, leapProg):
+    cumulative = unformatDegrees(cumProg)
+    leap = unformatDegrees(leapProg)
+
     GHAAries = 100.71
-    pmRot = GHAAries - cumProg + leapProg
+    pmRot = GHAAries - cumulative + leap
     return formatDegrees(pmRot)
 
 def observationRotation(date, time):
@@ -292,14 +295,15 @@ def observationRotation(date, time):
     return  formatDegrees(obsRot)
 
 def total(PM, obsRot):
-    return formatDegrees((PM + obsRot))
+    prime = unformatDegrees(PM)
+    observed = unformatDegrees(obsRot)
+    return formatDegrees((prime + observed))
 
 def calculateGHA(AriesGHA, sideRealAngle):
-    splitSHA = sideRealAngle.split('d')
-    degrees = int(splitSHA[0])
-    minutes = float(splitSHA[1])
+    Aries = unformatDegrees(AriesGHA)
+    Star = unformatDegrees(sideRealAngle)
 
-    return formatDegrees(AriesGHA + ((minutes / 60) + degrees))
+    return formatDegrees(Aries + Star)
 
 def formatDegrees(degreesIn):
     splitDegrees = str(degreesIn).split('.')
