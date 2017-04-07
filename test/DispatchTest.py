@@ -570,7 +570,7 @@ class DispatchTest(unittest.TestCase):
     def test1000_040_CumProg(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         CumProg = DP.CalculateCumProg('2016')
-        self.assertEquals(CumProg, 214.8)
+        self.assertEquals(round(CumProg, 1), 214.8)
 
     def test1000_050_leapProg(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
@@ -582,12 +582,12 @@ class DispatchTest(unittest.TestCase):
         cumProg = DP.CalculateCumProg('2016')
         leapProg = DP.CalculateLeapProg('2016')
         pm = DP.PMRotation(cumProg, leapProg)
-        self.assertEquals(pm, 6004.8)
+        self.assertEquals(round(pm, 1) , 6004.8)
 
     def test1000_060_observationRot(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         observedRot = DP.observationRotation(sighting['date'], sighting['time'])
-        self.assertEquals(observedRot, 3889.7)
+        self.assertEquals(round(observedRot, 1) , 3889.7)
 
     def test1000_070_total(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
