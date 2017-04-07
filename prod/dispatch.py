@@ -238,18 +238,18 @@ def CalculateCumulativeProgress(date):
     referenceYear = 2001
     dateSplit = date.split('-')
     year = int(dateSplit[0])
-    difference = int(year) - referenceYear
+    difference = year - referenceYear
     progress = difference * decrease
     return progress
 
 def CalculateLeapProg(date):
+    totalProgression = 59.0 / 60
     referenceYear = 2001
     dateSplit = date.split('-')
     year = int(dateSplit[0])
-
-    difference = int(year) - referenceYear
+    difference = year - referenceYear
     leapYear = int(difference/4)
-    leapProg = leapYear * 59.0
+    leapProg = leapYear * totalProgression
     return leapProg
 
 def PMRotation(cumProg, leapProg):
