@@ -1,5 +1,6 @@
 import math
 import StarCatalog as SC
+import datetime
 
 
 def dispatch(values=None):
@@ -258,6 +259,16 @@ def observationRotation(date, time):
     year = int(dateSplit[0])
     month = int(dateSplit[1])
     day = int(dateSplit[2])
+
+    EarthRotational = 86164.1
+    threeSixty = 21600
+    aries = datetime.datetime(2001, 01, 01, 00, 00, 00)
+    star = datetime.datetime(year, month, day, hour, minute, second)
+
+    dateDiff = (star - aries) 
+    dateDiff = dateDiff.seconds
+
+    return dateDiff / EarthRotational * threeSixty
 
 
 
