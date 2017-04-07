@@ -248,4 +248,20 @@ def PMRotation(cumProg, leapProg):
     pmRot = GHAAries - cumProg + leapProg
     return pmRot
 
+def observationRotation(date, time):
+    timeSplit = time.split(':')
+    hour = int(timeSplit[0])
+    minute = int(timeSplit[1])
+    second = int(timeSplit[2])
+
+    dateSplit = date.split('-')
+    year = int(dateSplit[0])
+    month = int(dateSplit[1])
+    day = int(dateSplit[2])
+
+
+
+
+
+
 
