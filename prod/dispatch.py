@@ -224,7 +224,7 @@ def predict(values):
         time = defaultTime
 
 
-def calculateCumProg(year):
+def CalculateCumProg(year):
     referenceYear = 2001
     difference = int(year) - referenceYear
     progress = difference * 14.31667
