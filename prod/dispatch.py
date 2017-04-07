@@ -273,8 +273,10 @@ def observationRotation(date, time):
 
     return  (fractRot - int(splitFractRot[0])) * 360
 
+def total(PM, obsRot):
+    return PM + obsRot
 
-#def calculateGHA(AriesGHA, SHA):
+
 
 
 
