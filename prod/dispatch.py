@@ -286,8 +286,8 @@ def observationRotation(date, time):
 def total(PM, obsRot):
     return PM + obsRot
 
-def calculateGHA(AriesGHA, SHA):
-    splitSHA = str(SHA).split('d')
+def calculateGHA(AriesGHA, sideRealAngle):
+    splitSHA = str(sideRealAngle).split('d')
     degrees = int(splitSHA[0])
     minutes = float(splitSHA[1])
 
