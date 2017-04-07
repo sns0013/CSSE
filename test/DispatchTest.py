@@ -570,28 +570,29 @@ class DispatchTest(unittest.TestCase):
     def test1000_040_CumProg(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         CumProg = DP.CalculateCumProg('2016')
-        self.assertTrue(CumProg, 214.8)
+        self.assertEquals(CumProg, 214.8)
 
     def test1000_050_leapProg(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         leapProg = DP.CalculateLeapProg('2016')
-        self.assertTrue(177, leapProg)
+        self.assertEquals(177, leapProg)
 
     def test1000_100_primeMeridian(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         cumProg = DP.CalculateCumProg('2016')
         leapProg = DP.CalculateLeapProg('2016')
         pm = DP.PMRotation(cumProg, leapProg)
-        self.assertTrue(pm, 6004.8)
+        self.assertEquals(pm, 6004.8)
 
     def test1000_060_observationRot(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         observedRot = DP.observationRotation(sighting['date'], sighting['time'])
-        self.assertTrue(observedRot, 3889.7)
+        self.assertEquals(observedRot, 3889.7)
 
     def test1000_070_total(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
-        self.assertTrue(False)
+        tot = DP.total(pm, obsRot)
+        self.assertTrue(tot, 9894.5)
 
     def test1000_080_format(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
