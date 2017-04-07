@@ -266,9 +266,9 @@ def observationRotation(date, time):
     star = datetime.datetime(year, month, day, hour, minute, second)
 
     dateDiff = (star - aries)
-    dateDiff = dateDiff.seconds
 
-    return dateDiff / EarthRotational * threeSixty
+
+    return dateDiff
 
 
 
