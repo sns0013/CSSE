@@ -178,3 +178,30 @@ def predict(values):
 
     else:
         date = defaultDate
+
+    defaultTime = "00:00:00"
+    if 'time' in values:
+        time = values['time']
+        if(not(':' in time)):
+            values['error'] = 'Time is invalid'
+            return values
+
+        timeSplit = time.split(':')
+        hour = int(timeSplit[0])
+        mimute = int(timeSplit[1])
+        second = int(timeSplit[2])
+
+        if(hour < 0 or hour > 24):
+            values['error'] = 'Time is invalid'
+            return values
+
+        if(minute < 0 or minute > 59):
+            values['error'] = 'Time is invalid'
+            return values
+
+        if(minute < 0 or minute > 59):
+            values['error'] = 'Time is invalid'
+            return values
+
+    else:
+        time = defaultTime
