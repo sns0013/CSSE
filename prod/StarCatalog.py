@@ -60,12 +60,13 @@ StarCatalog = {
     'star':'markab', 'sha':'13d36.7', 'dec':'15d17.6' }
 
 def getSHA(starName):
-    for star in StarCatalog:
-        if star == starName:
-            return StarCatalog['sha']
-
+    for starName in StarCatalog:
+        return StarCatalog['sha']
+    else:
+        return 'error'
 
 def getDEC(starName):
-   for star in StarCatalog:
-        if star == starName:
-            return StarCatalog['sha']
+    if starName.lower() in StarCatalog:
+
+    else:
+        return 'error'
