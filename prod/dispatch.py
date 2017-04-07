@@ -14,6 +14,7 @@ def dispatch(values=None):
         adjust(values)
         return values
     elif(values['op'] == 'predict'):
+        predict(values)
         return values    #This calculation is stubbed out
     elif(values['op'] == 'correct'):
         return values    #This calculation is stubbed out
@@ -24,7 +25,6 @@ def dispatch(values=None):
         return values
 
 def adjust(values):
-
 
     if 'observation' in values:
         observation = values['observation']
@@ -149,3 +149,30 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     obsDegrees = observationX + observationYY / 60
     adjustedAltitude = obsDegrees + aRefraction + aDip
     return adjustedAltitude
+
+def predict(values):
+    if 'date' in values:
+        time = values['date']
+        if(not('-' in time)):
+            values['error'] = 'Date is invalid'
+            return values
+
+        timeSplit = time.split('-')
+        year = int(timeSplit[0])
+        month = int(timeSplit[1])
+        day = int(timeSplit[2])
+
+        if(day < 1 or day > 31):
+            values['error'] = 'Date is invalid'
+            return values
+
+        if(month < 1 or month > 12):
+            values['error'] = 'Date is invalid'
+            return values
+
+        if(year >= 2001):
+            values['error'] = 'Date is invalid'
+            return values
+
+    else:
+        return "2001-01-01"

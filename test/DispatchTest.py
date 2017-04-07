@@ -410,35 +410,35 @@ class DispatchTest(unittest.TestCase):
     def test800_010_ShouldAccept_Date(self):
         sighting = {'op':'predict', 'date':'2016-01-17'}
         result = DP.dispatch(sighting)
-        self.assertTrue('error' in result)
+        self.assertTrue(not 'error' in result)
 
-    def test800_020_ShouldAccept_HighBoundHorizon(self):
+    def test800_020_ShouldAccept_MissingDate(self):
         sighting = {'op':'predict'}
         result = DP.dispatch(sighting)
-        self.assertTrue('error' in result)
+        self.assertTrue(not 'error' in result)
 
-    def test800_030_ShouldAccept_missingHorizon(self):
+    def test800_030_ShouldAccept_lowYear(self):
         sighting = {'op':'predict', 'date':'2000-01-17'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test800_040_ShouldAddError_LowBoundCasedHorizon(self):
+    def test800_040_ShouldAddError_invalidMonth(self):
         sighting = {'op':'predict', 'date':'2001-99-17'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test800_050_ShouldAddError_HighBoundCasedHorizon(self):
+    def test800_050_ShouldAddError_invalidDayLow(self):
         sighting = {'op':'predict', 'date':'2001-01-00'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test800_060_ShouldAddError_HighBoundCasedHorizon(self):
+    def test800_060_ShouldAddError_invalidDayHigh(self):
         sighting = {'op':'predict', 'date':'2001-01-32'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
-    def test800_070_ShouldAddError_HighBoundCasedHorizon(self):
-        sighting = {'op':'predict', 'date':'01-01-00'}
+    def test800_070_ShouldAddError_invalidDateFormat(self):
+        sighting = {'op':'predict', 'date':'01-01-17'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 # Sad path
