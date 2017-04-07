@@ -464,7 +464,7 @@ class DispatchTest(unittest.TestCase):
 #
 # Happy path
     def test900_010_ShouldAccept_Time(self):
-        sighting = {'op':'predict', 'date':'03:15:42'}
+        sighting = {'op':'predict', 'date':'3:15:42'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
