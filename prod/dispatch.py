@@ -250,7 +250,8 @@ def CalculateCumulativeProgress(date):
     year = int(dateSplit[0])
     difference = year - referenceYear
     progress = difference * decrease
-    return formatDegrees(progress)
+
+    return progress
 
 def CalculateLeapProg(date):
     totalProgression = 59.0 / 60
@@ -260,15 +261,12 @@ def CalculateLeapProg(date):
     difference = year - referenceYear
     leapYear = int(difference/4)
     leapProg = leapYear * totalProgression
-    return formatDegrees(leapProg)
+    return leapProg
 
 def PMRotation(cumProg, leapProg):
-    cumulative = unformatDegrees(cumProg)
-    leap = unformatDegrees(leapProg)
-
     GHAAries = 100.71
-    pmRot = GHAAries - cumulative + leap
-    return formatDegrees(pmRot)
+    pmRot = GHAAries - cumProg + leapProg
+    return pmRot
 
 def observationRotation(date, time):
     timeSplit = time.split(':')
@@ -290,20 +288,18 @@ def observationRotation(date, time):
     fractRot = dateDiff / EarthRotational
     splitFractRot = str(fractRot).split('.')
 
-    obsRot = (fractRot - int(splitFractRot[0])) * 360
 
-    return  formatDegrees(obsRot)
+    return  (fractRot - int(splitFractRot[0])) * 360
 
 def total(PM, obsRot):
-    prime = unformatDegrees(PM)
-    observed = unformatDegrees(obsRot)
-    return formatDegrees((prime + observed))
+    return PM + obsRot
 
 def calculateGHA(AriesGHA, sideRealAngle):
-    Aries = unformatDegrees(AriesGHA)
-    Star = unformatDegrees(sideRealAngle)
+    splitSHA = sideRealAngle.split('d')
+    degrees = int(splitSHA[0])
+    minutes = float(splitSHA[1])
 
-    return formatDegrees(Aries + Star)
+    return AriesGHA + ((minutes / 60) + degrees)
 
 def formatDegrees(degreesIn):
     splitDegrees = str(degreesIn).split('.')
@@ -312,11 +308,6 @@ def formatDegrees(degreesIn):
     format = '%d'%(degrees % 360) + 'd' + '%.1f'%(minutes)
     return format
 
-def unformatDegrees(format):
-    splitFormat = format.split('d')
-    degrees = int(splitFormat['0'])
-    minutes = float(splitFormat['1'])
-    return degrees + (minutes/60)
 
 
 
