@@ -569,7 +569,7 @@ class DispatchTest(unittest.TestCase):
 
     def test1000_040_CumProg(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
-        CumProg = DP.CalculateCumProg(sighting['date'])
+        CumProg = DP.CalculateCumulativeProgress(sighting['date'])
         self.assertEquals(round(CumProg, 2), 3.58)
 
     def test1000_050_leapProg(self):
