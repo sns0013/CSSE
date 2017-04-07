@@ -154,7 +154,7 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
 
 def predict(values):
     if 'body' in values:
-        starValues = SC.getSHA(values['body'])
+        starValues = SC.getStar(values['body'])
         if starValues == 'error':
             values['error'] = 'Star not in Catalog'
             return values
