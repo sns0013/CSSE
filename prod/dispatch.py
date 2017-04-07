@@ -271,7 +271,7 @@ def observationRotation(date, time):
     fractRot = str(fractRot).split('.')
 
 
-    return  (int(fractRot) - int(fractRot[0])) * 360
+    return  int(fractRot) - int(fractRot[0])
 
 
 #def calculateGHA(AriesGHA, SHA):
