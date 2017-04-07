@@ -408,10 +408,8 @@ class DispatchTest(unittest.TestCase):
 
     def test700_050_CorrectSideReal(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
-        starValues = SC.getStar(sighting['body'])
-        starValues.split(',')
-        sideRealAngle = starValues[0]
-        self.assertEquals('270d59.1', sideRealAngle)
+        starValues = SC.getSha(sighting['body'])
+        self.assertEquals('270d59.1', starValues)
 
 
 # Sad path
