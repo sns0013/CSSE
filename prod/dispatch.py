@@ -1,5 +1,5 @@
 import math
-import StarCatalog
+import StarCatalog as SC
 
 
 def dispatch(values=None):
@@ -153,6 +153,17 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     return adjustedAltitude
 
 def predict(values):
+    if 'body' in values:
+        starValues = SC.getStar(values['body'])
+        if starValues == 'error':
+            values['error'] = 'Star not in Catalog'
+            return values
+        else:
+            starValues.split(',')
+            sideRealAngle = starValues[0]
+            declination = starValues[1]
+    else:
+        values['error'] = "Body is missing"
 
     defaultDate = "2001-01-01"
     if 'date' in values:
@@ -160,23 +171,23 @@ def predict(values):
         if(not('-' in date)):
             values['error'] = 'Date is invalid'
             return values
+        else:
+            dateSplit = date.split('-')
+            year = int(dateSplit[0])
+            month = int(dateSplit[1])
+            day = int(dateSplit[2])
 
-        dateSplit = date.split('-')
-        year = int(dateSplit[0])
-        month = int(dateSplit[1])
-        day = int(dateSplit[2])
+            if(day < 1 or day > 31):
+                values['error'] = 'Date is invalid'
+                return values
 
-        if(day < 1 or day > 31):
-            values['error'] = 'Date is invalid'
-            return values
+            if(month < 1 or month > 12):
+                values['error'] = 'Date is invalid'
+                return values
 
-        if(month < 1 or month > 12):
-            values['error'] = 'Date is invalid'
-            return values
-
-        if(year <= 2001):
-            values['error'] = 'Date is invalid'
-            return values
+            if(year <= 2001):
+                values['error'] = 'Date is invalid'
+                return values
 
     else:
         date = defaultDate
@@ -187,28 +198,24 @@ def predict(values):
         if(not(':' in time)):
             values['error'] = 'Time is invalid'
             return values
+        else:
+            timeSplit = time.split(':')
+            hour = int(timeSplit[0])
+            minute = int(timeSplit[1])
+            second = int(timeSplit[2])
 
-        timeSplit = time.split(':')
-        hour = int(timeSplit[0])
-        minute = int(timeSplit[1])
-        second = int(timeSplit[2])
+            if(hour < 0 or hour > 24):
+                values['error'] = 'Time is invalid'
+                return values
 
-        if(hour < 0 or hour > 24):
-            values['error'] = 'Time is invalid'
-            return values
+            if(minute < 0 or minute > 59):
+                values['error'] = 'Time is invalid'
+                return values
 
-        if(minute < 0 or minute > 59):
-            values['error'] = 'Time is invalid'
-            return values
-
-        if(second < 0 or second > 59):
-            values['error'] = 'Time is invalid'
-            return values
-
+            if(second < 0 or second > 59):
+                values['error'] = 'Time is invalid'
+                return values
     else:
         time = defaultTime
 
-import xlrd
 
-
-    wb = xlrd.open_workbook('StarCaltalog.xlsx', on_demand = True)
