@@ -300,6 +300,13 @@ def calculateGHA(AriesGHA, sideRealAngle):
 
     return AriesGHA + ((minutes / 60) + degrees)
 
+def formatDegrees(degreesIn):
+    splitDegrees = str(degreesIn).split('.')
+    degrees = int(splitDegrees[0])
+    minutes = (degreesIn - degrees) * 60
+    format = '%d'%(degrees % 360) + 'd' + '%.1f'%(minutes)
+    return format
+
 
 
 
