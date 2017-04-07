@@ -60,7 +60,7 @@ StarCatalog = {
     'markab':'13d36.7,15d17.6'}
 
 def getStar(starName):
-    if starName in StarCatalog:
+    if starName.lower() in StarCatalog:
         return StarCatalog[starName]
     else:
         return 'error'
