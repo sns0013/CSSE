@@ -262,7 +262,7 @@ def observationRotation(date, time):
 
     EarthRotational = 86164.1
     threeSixty = 21600
-    aries = datetime.datetime(2001, 01, 01, 00, 00, 00)
+    aries = datetime.datetime(year, 01, 01, 00, 00, 00)
     star = datetime.datetime(year, month, day, hour, minute, second)
 
     dateDiff = (star - aries)
