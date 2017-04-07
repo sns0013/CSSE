@@ -224,6 +224,14 @@ def predict(values):
     else:
         time = defaultTime
 
+    cumProg = CalculateCumProg(year)
+    leapProg = CalculateLeapProg(year)
+    PM = PMRotation(cumProg, leapProg)
+    obsRot = observationRotation(date, time)
+    AriesGHA = total(PM, obsRot)
+    calculateGHA(AriesGHA, sideRealAngle)
+
+
 
 def CalculateCumProg(year):
     referenceYear = 2001
