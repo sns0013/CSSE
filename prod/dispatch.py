@@ -159,7 +159,7 @@ def predict(values):
             values['error'] = 'Star not in Catalog'
             return values
         else:
-            starValues.split(',')
+            starValues = starValues.split(',')
             sideRealAngle = starValues[0]
             declination = starValues[1]
     else:

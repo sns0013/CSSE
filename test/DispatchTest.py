@@ -400,15 +400,17 @@ class DispatchTest(unittest.TestCase):
     def test700_040_CorrectDeclination(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
         starValues = SC.getStar(sighting['body'])
-        starValues.split(',')
+        starValues = starValues.split(',')
         sideRealAngle = starValues[0]
         declination = starValues[1]
-
         self.assertEquals('7d24.3', declination)
 
     def test700_050_CorrectSideReal(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
-
+        starValues = SC.getStar(sighting['body'])
+        starValues = starValues.split(',')
+        sideRealAngle = starValues[0]
+        declination = starValues[1]
         self.assertEquals('270d59.1', sideRealAngle)
 
 
