@@ -250,7 +250,7 @@ def CalculateCumulativeProgress(date):
     year = int(dateSplit[0])
     difference = year - referenceYear
     progress = difference * decrease
-    return progress
+    return formatDegrees(progress)
 
 def CalculateLeapProg(date):
     totalProgression = 59.0 / 60
@@ -260,12 +260,12 @@ def CalculateLeapProg(date):
     difference = year - referenceYear
     leapYear = int(difference/4)
     leapProg = leapYear * totalProgression
-    return leapProg
+    return formatDegrees(leapProg)
 
 def PMRotation(cumProg, leapProg):
     GHAAries = 100.71
     pmRot = GHAAries - cumProg + leapProg
-    return pmRot
+    return formatDegrees(pmRot)
 
 def observationRotation(date, time):
     timeSplit = time.split(':')
@@ -287,18 +287,19 @@ def observationRotation(date, time):
     fractRot = dateDiff / EarthRotational
     splitFractRot = str(fractRot).split('.')
 
+    obsRot = (fractRot - int(splitFractRot[0])) * 360
 
-    return  (fractRot - int(splitFractRot[0])) * 360
+    return  formatDegrees(obsRot)
 
 def total(PM, obsRot):
-    return PM + obsRot
+    return formatDegrees((PM + obsRot))
 
 def calculateGHA(AriesGHA, sideRealAngle):
     splitSHA = sideRealAngle.split('d')
     degrees = int(splitSHA[0])
     minutes = float(splitSHA[1])
 
-    return AriesGHA + ((minutes / 60) + degrees)
+    return formatDegrees(AriesGHA + ((minutes / 60) + degrees))
 
 def formatDegrees(degreesIn):
     splitDegrees = str(degreesIn).split('.')
@@ -307,6 +308,11 @@ def formatDegrees(degreesIn):
     format = '%d'%(degrees % 360) + 'd' + '%.1f'%(minutes)
     return format
 
+def unformatDegrees(format):
+    splitFormat = format.split('d')
+    degrees = int(splitFormat['0'])
+    minutes = float(splitFormat['1'])
+    return degrees + (minutes/60)
 
 
 
