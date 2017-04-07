@@ -236,7 +236,7 @@ def CalculateCumProg(year):
     #cumProg = '%d'%(degrees) + 'd' + '%.1f'%(minutes)
     return progress
 
-def leapProg(year):
+def CalculateLeapProg(year):
     referenceYear = 2001
     difference = int(year) - referenceYear
     leapYear = int(difference/4)

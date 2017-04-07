@@ -574,7 +574,7 @@ class DispatchTest(unittest.TestCase):
 
     def test1000_050_leapProg(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
-        leapProg = DP.leapProg('2016')
+        leapProg = DP.CalculateLeapProg('2016')
         self.assertTrue(177, leapProg)
 
     def test1000_060_observationRot(self):
