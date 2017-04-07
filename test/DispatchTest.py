@@ -464,7 +464,7 @@ class DispatchTest(unittest.TestCase):
 #
 # Happy path
     def test900_010_ShouldAccept_Time(self):
-        sighting = {'op':'predict', 'date':'03:15:42'}
+        sighting = {'op':'predict', 'time':'03:15:42'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
@@ -474,22 +474,22 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue(not 'error' in result)
 
     def test900_030_ShouldAccept_lowYear(self):
-        sighting = {'op':'predict', 'date':'03:15:99'}
+        sighting = {'op':'predict', 'time':'03:15:99'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test900_040_ShouldAddError_invalidMonth(self):
-        sighting = {'op':'predict', 'date':'25:15:42'}
+        sighting = {'op':'predict', 'time':'25:15:42'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test900_050_ShouldAddError_invalidDayLow(self):
-        sighting = {'op':'predict', 'date':'03:67:42'}
+        sighting = {'op':'predict', 'time':'03:67:42'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test900_060_ShouldAddError_invalidDateFormat(self):
-        sighting = {'op':'predict', 'date':'109:15:42'}
+        sighting = {'op':'predict', 'time':'109:15:42'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 # Sad path

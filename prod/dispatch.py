@@ -1,4 +1,5 @@
 import math
+import stars_catalog
 
 def dispatch(values=None):
     #Validate parm
