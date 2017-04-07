@@ -162,6 +162,7 @@ def predict(values):
             starValues = starValues.split(',')
             sideRealAngle = starValues[0]
             declination = starValues[1]
+
     else:
         values['error'] = "Body is missing"
 
