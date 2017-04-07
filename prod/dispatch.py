@@ -224,3 +224,16 @@ def predict(values):
         time = defaultTime
 
 
+def calculateCumProg(year):
+    referenceYear = 2001
+    difference = int(year) - referenceYear
+    progress = difference * 14.31667
+    progress = progress/60
+    progress = progress.split('.')
+    degrees = int(progress[0])
+    minutes = float(progress[1])
+
+    minutes = minutes * 60
+
+    cumProg = '%d'%(degrees) + 'd' + '%.1f'%(minutes)
+    return cumProg
