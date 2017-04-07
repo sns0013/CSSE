@@ -1,7 +1,7 @@
 import unittest
 import prod.dispatch as DP
 import math
-
+import prod.StarCatalog as SC
 class DispatchTest(unittest.TestCase):
 
 
@@ -399,13 +399,19 @@ class DispatchTest(unittest.TestCase):
 
     def test700_040_CorrectDeclination(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
-        result = DP.dispatch(sighting)
-        self.assertEquals('7d24.3', result['latitude'])
+        starValues = SC.getStar(sighting['body'])
+        starValues.split(',')
+        sideRealAngle = starValues[0]
+        declination = starValues[1]
+
+        self.assertEquals('7d24.3', declination)
 
     def test700_050_CorrectSideReal(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
-        result = DP.dispatch(sighting)
-        self.assertEquals('270d59.1', result['longitude'])
+        starValues = SC.getStar(sighting['body'])
+        starValues.split(',')
+        sideRealAngle = starValues[0]
+        self.assertEquals('270d59.1', sideRealAngle)
 
 
 # Sad path
