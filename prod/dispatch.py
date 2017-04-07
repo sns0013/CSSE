@@ -236,7 +236,6 @@ def predict(values):
 
 
 
-
 def CalculateCumulativeProgress(date):
     decrease = 14.31667 / 60
     referenceYear = 2001
@@ -288,7 +287,7 @@ def total(PM, obsRot):
     return PM + obsRot
 
 def calculateGHA(AriesGHA, sideRealAngle):
-    splitSHA = str(sideRealAngle).split('d')
+    splitSHA = sideRealAngle.split('d')
     degrees = int(splitSHA[0])
     minutes = float(splitSHA[1])
 
