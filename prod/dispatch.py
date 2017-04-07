@@ -279,7 +279,7 @@ def total(PM, obsRot):
 def calculateGHA(AriesGHA, SHA):
     splitSHA = SHA.split('d')
     degrees = int(splitSHA[0])
-    minutes = int(splitSHA[1])
+    minutes = float(splitSHA[1])
 
     return AriesGHA + (((minutes / 60) + degrees) *60)
 
