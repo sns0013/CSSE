@@ -229,7 +229,7 @@ def CalculateCumProg(year):
     difference = int(year) - referenceYear
     progress = difference * 14.31667
     progress = progress/60
-    progress = progress.split('.')
+    progress = str(progress).split('.')
     degrees = int(progress[0])
     minutes = float(progress[1])
 
