@@ -605,7 +605,7 @@ class DispatchTest(unittest.TestCase):
         pm = DP.PMRotation(cumProg, leapProg)
         obsRot = DP.observationRotation(sighting['date'], sighting['time'])
         tot = DP.total(pm, obsRot * 60)
-        gha = calculateGHA(tot, '270d59.1')
+        gha = DP.calculateGHA(tot, '270d59.1')
         self.assertEquals(gha, 26153.6)
 
     def test1000_080_format(self):
