@@ -151,16 +151,18 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     return adjustedAltitude
 
 def predict(values):
+
+    defaultDate = "2001-01-01"
     if 'date' in values:
-        time = values['date']
-        if(not('-' in time)):
+        date = values['date']
+        if(not('-' in date)):
             values['error'] = 'Date is invalid'
             return values
 
-        timeSplit = time.split('-')
-        year = int(timeSplit[0])
-        month = int(timeSplit[1])
-        day = int(timeSplit[2])
+        dateSplit = date.split('-')
+        year = int(dateSplit[0])
+        month = int(dateSplit[1])
+        day = int(dateSplit[2])
 
         if(day < 1 or day > 31):
             values['error'] = 'Date is invalid'
@@ -175,4 +177,4 @@ def predict(values):
             return values
 
     else:
-        return "2001-01-01"
+        date = defaultDate
