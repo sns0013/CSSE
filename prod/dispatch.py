@@ -159,6 +159,7 @@ def predict(values):
         values['error'] = "Lat and Long cannot be in dictionary"
         return values
 
+    sideRealAngle = 0
     if 'body' in values:
         starValues = SC.getStar(values['body'])
         if starValues == 'error':
@@ -224,12 +225,14 @@ def predict(values):
     else:
         time = defaultTime
 
-    #cumProg = CalculateCumProg(year)
-    #leapProg = CalculateLeapProg(year)
-    #PM = PMRotation(cumProg, leapProg)
-    #obsRot = observationRotation(date, time)
-    #AriesGHA = total(PM, obsRot)
-    #calculateGHA(AriesGHA, sideRealAngle)
+    cumProg = CalculateCumulativeProgress(date)
+    leapProg = CalculateLeapProg(date)
+    PM = PMRotation(cumProg, leapProg)
+    obsRot = observationRotation(date, time)
+    AriesGHA = total(PM, obsRot)
+    GHA = calculateGHA(AriesGHA, sideRealAngle)
+
+
 
 
 
