@@ -288,7 +288,7 @@ def calculateGHA(AriesGHA, SHA):
     degrees = int(splitSHA[0])
     minutes = float(splitSHA[1])
 
-    return AriesGHA + (((minutes / 60) + degrees) *60)
+    return AriesGHA + ((minutes / 60) + degrees)
 
 
 
