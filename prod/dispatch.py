@@ -170,7 +170,7 @@ def predict(values):
             values['error'] = 'Date is invalid'
             return values
 
-        if(year >= 2001):
+        if(year <= 2001):
             values['error'] = 'Date is invalid'
             return values
 
