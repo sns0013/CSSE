@@ -233,20 +233,19 @@ def predict(values):
 
 
 
-def CalculateCumProg(year):
+def CalculateCumProg(date):
     referenceYear = 2001
+    dateSplit = date.split('-')
+    year = int(dateSplit[0])
     difference = int(year) - referenceYear
     progress = difference * 14.31667
-    #progress = progress/60
-    #progress = str(progress).split('.')
-    #degrees = int(progress[0])
-    #minutes = float(progress[1])
-    #minutes = minutes * 60
-    #cumProg = '%d'%(degrees) + 'd' + '%.1f'%(minutes)
     return progress
 
-def CalculateLeapProg(year):
+def CalculateLeapProg(date):
     referenceYear = 2001
+    dateSplit = date.split('-')
+    year = int(dateSplit[0])
+
     difference = int(year) - referenceYear
     leapYear = int(difference/4)
     leapProg = leapYear * 59.0
@@ -269,7 +268,6 @@ def observationRotation(date, time):
     day = int(dateSplit[2])
 
     EarthRotational = 86164.1
-    threeSixty = 21600
     aries = datetime.datetime(year, 01, 01, 00, 00, 00)
     star = datetime.datetime(year, month, day, hour, minute, second)
 
