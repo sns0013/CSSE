@@ -60,7 +60,7 @@ def adjust(values):
             values['error'] = 'Height is invalid'
             return values
 
-        height = int(values['height'])
+        height = float(values['height'])
         if(height < 0):
             values['error'] = 'Height is invalid'
             return values
