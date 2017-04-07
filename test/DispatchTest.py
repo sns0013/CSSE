@@ -433,12 +433,12 @@ class DispatchTest(unittest.TestCase):
 #
 # Happy path
     def test800_010_ShouldAccept_Date(self):
-        sighting = {'op':'predict', 'date':'2016-01-17'}
+        sighting = {'op':'predict', 'date':'2016-01-17', 'body':'betelgeuse'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test800_020_ShouldAccept_MissingDate(self):
-        sighting = {'op':'predict'}
+        sighting = {'op':'predict', 'body':'betelgeuse'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
@@ -489,12 +489,12 @@ class DispatchTest(unittest.TestCase):
 #
 # Happy path
     def test900_010_ShouldAccept_Time(self):
-        sighting = {'op':'predict', 'time':'03:15:42'}
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test900_020_ShouldAccept_TimeDate(self):
-        sighting = {'op':'predict'}
+        sighting = {'op':'predict', 'body':'betelgeuse'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
