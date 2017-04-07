@@ -1,5 +1,6 @@
 import math
-import stars_catalog
+import StarCatalog
+
 
 def dispatch(values=None):
     #Validate parm
@@ -206,3 +207,8 @@ def predict(values):
 
     else:
         time = defaultTime
+
+import xlrd
+
+
+    wb = xlrd.open_workbook('StarCaltalog.xlsx', on_demand = True)

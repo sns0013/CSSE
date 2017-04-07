@@ -382,6 +382,31 @@ class DispatchTest(unittest.TestCase):
 #                     missing star
 #
 # Happy path
+    def test700_010_ShouldAccept_Body(self):
+        sighting = {'op':'predict', 'body':'betelgeuse'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test700_020_ShouldNTAccept_MissingStar(self):
+        sighting = {'op':'predict'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test700_030_ShouldNTAccept_InvalidStar(self):
+        sighting = {'op':'predict', 'body':'Sydney'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test700_040_CorrectDeclination(self):
+        sighting = {'op':'predict', 'body':'betelgeuse'}
+        result = DP.dispatch(sighting)
+        self.assertEquals('7d24.3', result['latitude'])
+
+    def test700_050_CorrectSideReal(self):
+        sighting = {'op':'predict', 'body':'betelgeuse'}
+        result = DP.dispatch(sighting)
+        self.assertEquals('270d59.1', result['longitude'])
+
 
 # Sad path
 
