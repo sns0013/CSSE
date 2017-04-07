@@ -413,24 +413,34 @@ class DispatchTest(unittest.TestCase):
         self.assertTrue('error' in result)
 
     def test800_020_ShouldAccept_HighBoundHorizon(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'artificial'}
+        sighting = {'op':'predict'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
 
     def test800_030_ShouldAccept_missingHorizon(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160'}
+        sighting = {'op':'predict', 'date':'2000-01-17'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
 
     def test800_040_ShouldAddError_LowBoundCasedHorizon(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        sighting = {'op':'predict', 'date':'2001-99-17'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
 
     def test800_050_ShouldAddError_HighBoundCasedHorizon(self):
-        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
+        sighting = {'op':'predict', 'date':'2001-01-00'}
         result = DP.dispatch(sighting)
-        self.assertTrue(not 'error' in result)
+        self.assertTrue('error' in result)
+
+    def test800_060_ShouldAddError_HighBoundCasedHorizon(self):
+        sighting = {'op':'predict', 'date':'2001-01-32'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test800_070_ShouldAddError_HighBoundCasedHorizon(self):
+        sighting = {'op':'predict', 'date':'01-01-00'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 # Sad path
 
 # -----------------------------------------------------------------------
