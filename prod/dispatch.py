@@ -172,6 +172,7 @@ def predict(values):
             values['latitude'] = declination
     else:
         values['error'] = "Body is missing"
+        return values
 
     defaultDate = "2001-01-01"
     if 'date' in values:
