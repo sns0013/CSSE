@@ -188,7 +188,7 @@ def predict(values):
 
         timeSplit = time.split(':')
         hour = int(timeSplit[0])
-        mimute = int(timeSplit[1])
+        minute = int(timeSplit[1])
         second = int(timeSplit[2])
 
         if(hour < 0 or hour > 24):
@@ -199,7 +199,7 @@ def predict(values):
             values['error'] = 'Time is invalid'
             return values
 
-        if(minute < 0 or minute > 59):
+        if(second < 0 or second > 59):
             values['error'] = 'Time is invalid'
             return values
 
