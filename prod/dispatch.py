@@ -151,7 +151,7 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     obsDegrees = observationX + observationYY / 60
     adjustedAltitude = obsDegrees + aRefraction + aDip
     return adjustedAltitude
-
+#------------------------------Assignment 4
 def predict(values):
 
     if 'latitude' in values or 'longitude' in values:
@@ -194,7 +194,6 @@ def predict(values):
             if(year <= 2001):
                 values['error'] = 'Date is invalid'
                 return values
-
     else:
         date = defaultDate
 

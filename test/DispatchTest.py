@@ -405,7 +405,6 @@ class DispatchTest(unittest.TestCase):
         declination = starValues[1]
         self.assertEquals('7d24.3', declination)
 
-
     def test700_050_CorrectSideReal(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
         starValues = SC.getStar(sighting['body'])
@@ -568,3 +567,22 @@ class DispatchTest(unittest.TestCase):
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
+    def test1000_040_CumProg(self):
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'latitude':'7d24.3', 'longitude':'7d24.3'}
+        CumProg = DP.CalculateCumProg()
+        self.assertTrue(CumProg, '-3d34.8')
+
+    def test1000_050_leapProg(self):
+        self.assertTrue(False)
+
+    def test1000_060_observationRot(self):
+         self.assertTrue(False)
+
+    def test1000_040_total(self):
+        self.assertTrue(False)
+
+    def test1000_050_format(self):
+        self.assertTrue(False)
+
+    def test1000_060_longitude(self):
+        self.assertTrue(False)
