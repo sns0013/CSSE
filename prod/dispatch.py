@@ -153,7 +153,8 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation):
     return adjustedAltitude
 
 def predict(values):
-    if 'latitude' or 'longitude' in values:
+
+    if 'latitude' in values:
         values['error'] = "Lat and Long cannot be in dictionary"
         return values
 
