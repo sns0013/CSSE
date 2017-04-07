@@ -1,5 +1,5 @@
 import unittest
-import softwareprocess.dispatch as DP
+import prod.dispatch as DP
 import math
 
 class DispatchTest(unittest.TestCase):
@@ -364,3 +364,118 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural', 'altitude':'60d25.5'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
+
+# -----------------------------------------------------------------------
+# ---- Acceptance Tests
+# 700 Body
+#    Desired level of confidence:    boundary value analysis
+#    Input-output Analysis
+#        inputs:      star ->    string where string in star list
+#                                mandatory, unvalidated
+#        outputs:    none if valid, error if invalid
+#    Happy path analysis:
+#        star:      nominal value    stars = betelgeuse
+#
+#    Sad path analysis:
+#        star:        invalid input: sydney
+#                     invalid input: ""
+#                     missing star
+#
+# Happy path
+
+# Sad path
+
+# -----------------------------------------------------------------------
+# ---- Acceptance Tests
+# 800 Date
+#    Desired level of confidence:    boundary value analysis
+#    Input-output Analysis
+#        inputs:      date ->    yyyy-mm-dd where yyyy .GE. 2001
+#                                             mm is an integer 01 - 12
+#                                             dd is an integer 01 - 31
+#                                 optional, unvalidated
+#        outputs:    none
+#    Happy path analysis:
+#        date:      nominal value    2016-01-17
+#                   missing
+#
+#    Sad path analysis:
+#        date:       2000-01-17
+#                    2001-99-17
+#                    2001-01-00
+#                    2001-01-32
+#                    01-01-17
+#
+# Happy path
+    def test800_010_ShouldAccept_Date(self):
+        sighting = {'op':'predict', 'date':'2016-01-17'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test800_020_ShouldAccept_HighBoundHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'artificial'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test800_030_ShouldAccept_missingHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test800_040_ShouldAddError_LowBoundCasedHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Natural'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+
+    def test800_050_ShouldAddError_HighBoundCasedHorizon(self):
+        sighting = {'op':'adjust', 'observation':'60d1.5', 'height':'60', 'temperature':'60', 'pressure':'160', 'horizon':'Artificial'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
+# Sad path
+
+# -----------------------------------------------------------------------
+# ---- Acceptance Tests
+# 900 Time
+#    Desired level of confidence:    boundary value analysis
+#    Input-output Analysis
+#        inputs:      time ->    hh:mm:ss  where hh is 0 to 24
+#                                               mm is 0 to 59
+#                                               mm is 0 to 59
+#                                 optional, unvalidated
+#        outputs:    none
+#    Happy path analysis:
+#        time:      nominal: 03:15:42
+#                   missing
+#
+#
+#    Sad path analysis:
+#        time:       03:15:99
+#                   109:15:99
+#
+# Happy path
+
+# Sad path
+
+# -----------------------------------------------------------------------
+# ---- Acceptance Tests
+# 1000 predict
+#    Desired level of confidence:    boundary value analysis
+#    Input-output Analysis
+#        inputs:      dict ->
+#        outputs:    lat long
+#    Happy path analysis:
+#        angle:
+#
+#                    nominal value    y.y=45.0
+#                    low bound        y.y=0.0
+#                    high bound       y.y=59.9
+#
+#                    correct format    angle = 30d1.5
+#
+#    Sad path analysis:
+#        angle:       lat long is already present
+#
+# Happy path
+
+# Sad path
+
