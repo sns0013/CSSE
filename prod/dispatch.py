@@ -154,7 +154,7 @@ def calculateAdjustedAltitude(aDip, aRefraction, observation): #7
 #------------------------------Assignment 4
 def predict(values):
 
-    if 'latitude' in values or 'longitude' in values:
+    if 'lat' in values or 'long' in values:
         values['error'] = "Lat and Long cannot be in dictionary"
         return values
 
@@ -168,7 +168,7 @@ def predict(values):
             starValues = starValues.split(',')
             sideRealAngle = starValues[0]
             declination = starValues[1]
-            values['latitude'] = declination
+            values['lat'] = declination
     else:
         values['error'] = "Body is missing"
         return values
@@ -238,7 +238,7 @@ def predict(values):
     dec = splitMin[1]
     minutes = splitMin[0] + "." + dec[:1]
     formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%(float(minutes))
-    values['longitude'] = formatLongitude
+    values['long'] = formatLongitude
     return values
 
 

@@ -416,7 +416,7 @@ class DispatchTest(unittest.TestCase):
     def test700_060_latitudeCorrect(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
         result = DP.dispatch(sighting)
-        self.assertEquals('7d24.3', result['latitude'])
+        self.assertEquals('7d24.3', result['lat'])
 
 
 # Sad path
@@ -553,17 +553,17 @@ class DispatchTest(unittest.TestCase):
 
 # Sad path
     def test1000_010_ShouldAddError_Lat(self):
-        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'latitude':'7d24.3'}
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'lat':'7d24.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test1000_020_ShouldAddError_Long(self):
-        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'longitude':'7d24.3'}
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'long':'7d24.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test1000_030_ShouldAddError_LatandLong(self):
-        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'latitude':'7d24.3', 'longitude':'7d24.3'}
+        sighting = {'op':'predict', 'time':'03:15:42', 'body':'betelgeuse', 'lat':'7d24.3', 'long':'7d24.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
@@ -611,6 +611,6 @@ class DispatchTest(unittest.TestCase):
     def test1000_080_format(self):
         sighting = {'op':'predict', 'body':'Betelgeuse', 'date':'2016-01-17', 'time':'03:15:42'}
         result = DP.dispatch(sighting)
-        self.assertEquals(result['longitude'], '75d53.6')
+        self.assertEquals(result['long'], '75d53.6')
 
 
