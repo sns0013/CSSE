@@ -2,7 +2,6 @@ import math
 import StarCatalog as SC
 import datetime
 
-
 def dispatch(values=None):
     #Validate parm
     if(values == None):
@@ -238,7 +237,7 @@ def predict(values):
     minutes = (GHA - degrees) * 60
     formatLongitude = '%d'%(degrees % 360) + 'd' + '%.2f'%(minutes)
 
-    values['longitude'] = formatLongitude + " " + str(minutes)
+    values['longitude'] = formatLongitude
     return values
 
 
