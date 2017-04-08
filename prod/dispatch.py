@@ -227,6 +227,7 @@ def predict(values):
 
     cumProg = CalculateCumulativeProgress(date)
     leapProg = CalculateLeapProg(date)
+
     PM = PMRotation(cumProg, leapProg)
     obsRot = observationRotation(date, time)
     AriesGHA = total(PM, obsRot)
@@ -234,7 +235,7 @@ def predict(values):
 
     splitGHA = str(GHA).split('.')
     degrees = int(splitGHA[0])
-    minutes = (GHA - degrees) * 60
+    minutes = float(GHA - degrees) * 60
     formatLongitude = '%d'%(degrees % 360) + 'd' + '%.2f'%(minutes)
 
     values['longitude'] = formatLongitude
@@ -299,7 +300,6 @@ def calculateGHA(AriesGHA, sideRealAngle):
     minutes = float(splitSHA[1])
 
     return AriesGHA + ((minutes / 60) + degrees)
-
 
 
 
