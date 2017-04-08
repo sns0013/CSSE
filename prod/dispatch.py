@@ -234,7 +234,9 @@ def predict(values):
     GHA = calculateGHA(AriesGHA, sideRealAngle)
     splitGHA = str(GHA).split('.')
     minutes = ((GHA - int(splitGHA[0])) * 60)
-    minutes = minutes * 100 / 100
+    splitMin = str(minutes).split('.')
+    dec = splitMin[1]
+    minutes = splitMin[0] + dec[:1]
     formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%(minutes)
     values['longitude'] = formatLongitude
     return values
