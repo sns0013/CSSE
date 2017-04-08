@@ -236,7 +236,7 @@ def predict(values):
     minutes = ((GHA - int(splitGHA[0])) * 60)
     splitMin = str(minutes).split('.')
     dec = splitMin[1]
-    minutes = splitMin[0] + dec[:1]
+    minutes = splitMin[0] + "." + dec[:1]
     formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%(float(minutes))
     values['longitude'] = formatLongitude
     return values
