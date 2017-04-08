@@ -26,7 +26,7 @@ def dispatch(values=None):
         values['error'] = 'op is not a legal operation'
         return values
 
-def adjust(values):
+def adjust(values): #25
 
     if 'observation' in values:
         observation = values['observation']
@@ -86,7 +86,7 @@ def adjust(values):
 
     defaultPressure = '1010'
     if 'pressure' in values:
-        pressure = values['pressure']
+        pressure = values['pressure'] #75
 
         try:
             pressure = values['pressure']
@@ -122,20 +122,20 @@ def adjust(values):
     altitude = calculateAdjustedAltitude(aDip, aRefraction, observation)
     splitAltitude = str(altitude).split('.')
     formatedAltitude = '%d'%(int(splitAltitude[0])) + 'd' + '%.1f'%((altitude - int(splitAltitude[0])) * 60)
-    values['altitude'] = formatedAltitude
+    values['altitude'] = formatedAltitude # 75 + 29 = 104
 
-def convertToCelcius(temperature):
+def convertToCelcius(temperature): #3
     celcius = (int(temperature) - 32) * (5.0/9.0)
     return celcius
 
-def calculateDip(horizon, height):
+def calculateDip(horizon, height): #6
     if horizon.lower() == 'natural':
         dip = ((-.97) * math.sqrt(long(height))) / 60
     else:
         dip = 0
     return dip
 
-def calculateRefraction(pressure, temperature, observation):
+def calculateRefraction(pressure, temperature, observation): #8
     celcius = convertToCelcius(temperature)
     observationSplit = observation.split('d')
     observationX = int(observationSplit[0])
@@ -144,7 +144,7 @@ def calculateRefraction(pressure, temperature, observation):
     refraction = (-0.00452 * int(pressure)) / (273 + celcius) / math.tan(math.radians(obsDegrees))
     return refraction
 
-def calculateAdjustedAltitude(aDip, aRefraction, observation):
+def calculateAdjustedAltitude(aDip, aRefraction, observation): #7
     observationSplit = observation.split('d')
     observationX = int(observationSplit[0])
     observationYY = float(observationSplit[1])
@@ -300,12 +300,7 @@ def calculateGHA(AriesGHA, sideRealAngle):
 
     return AriesGHA + ((minutes / 60) + degrees)
 
-def formatDegrees(degreesIn):
-    splitDegrees = str(degreesIn).split('.')
-    degrees = int(splitDegrees[0])
-    minutes = (degreesIn - degrees) * 60
-    format = '%d'%(degrees % 360) + 'd' + '%.1f'%(minutes)
-    return format
+
 
 
 
