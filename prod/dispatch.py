@@ -233,7 +233,8 @@ def predict(values):
     AriesGHA = total(PM, obsRot)
     GHA = calculateGHA(AriesGHA, sideRealAngle)
     splitGHA = str(GHA).split('.')
-    formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%((GHA - int(splitGHA[0])) * 60)
+    minutes = ((GHA - int(splitGHA[0])) * 60) - (((GHA - int(splitGHA[0])) * 60) % 0.01)
+    formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%(minutes)
     values['longitude'] = formatLongitude
     return values
 
