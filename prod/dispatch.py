@@ -232,12 +232,8 @@ def predict(values):
     obsRot = observationRotation(date, time)
     AriesGHA = total(PM, obsRot)
     GHA = calculateGHA(AriesGHA, sideRealAngle)
-
     splitGHA = str(GHA).split('.')
-    degrees = int(splitGHA[0])
-    minutes = float(GHA - degrees) * 60
-    formatLongitude = '%d'%(degrees % 360) + 'd' + '%.2f'%(minutes)
-
+    formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%((GHA - int(splitGHA[0])) * 60)
     values['longitude'] = formatLongitude
     return values
 
