@@ -187,6 +187,18 @@ def predict(values):
             return values
         else:
             dateSplit = date.split('-')
+            if(len(dateSplit < 3)):
+                values['error'] = 'Date is invalid'
+                return values
+
+            try:
+                year = int(dateSplit[0])
+                month = int(dateSplit[1])
+                day = int(dateSplit[2])
+            except ValueError:
+                values['error'] = 'Date is invalid'
+                return values
+
             year = int(dateSplit[0])
             month = int(dateSplit[1])
             day = int(dateSplit[2])
