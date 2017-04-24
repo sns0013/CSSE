@@ -532,6 +532,34 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'predict', 'time':'109:15:42'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
+
+    def test900_070_NumericTimeOne(self):
+        sighting = {'op':'predict', 'time':'42'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test900_080_NumericTimeTwo(self):
+        sighting = {'op':'predict', 'time':'42:11'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test900_090_ShouldAddError_NonNumeric1(self):
+        sighting = {'op':'predict', 'time':'aa:15:42'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test900_100_ShouldAddError_NonNumeric2(self):
+        sighting = {'op':'predict', 'time':'22:aa:42'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test900_110_ShouldAddError_NonNumeric3(self):
+        sighting = {'op':'predict', 'time':'22:15:aa'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+
+
 # Sad path
 
 # -----------------------------------------------------------------------
