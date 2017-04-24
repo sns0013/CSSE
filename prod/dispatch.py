@@ -161,7 +161,10 @@ def predict(values):
     sideRealAngle = 0
     if 'body' in values:
 
-
+        body = values['body']
+        if(body.isdigit()):
+            values['error'] = 'Body is invalid'
+            return values
 
         starValues = SC.getStar(values['body'])
         if starValues == 'error':
