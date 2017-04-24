@@ -160,6 +160,9 @@ def predict(values):
 
     sideRealAngle = 0
     if 'body' in values:
+
+
+
         starValues = SC.getStar(values['body'])
         if starValues == 'error':
             values['error'] = 'Star not in Catalog'
