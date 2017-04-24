@@ -419,7 +419,7 @@ class DispatchTest(unittest.TestCase):
         self.assertEquals('7d24.3', result['lat'])
 
     def test700_070_BodyIsNumeric(self):
-        sighting = {'op':'predict', 'body':'betelgeuse'}
+        sighting = {'op':'predict', 'body':'123'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
