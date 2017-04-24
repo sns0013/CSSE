@@ -404,12 +404,7 @@ class DispatchTest(unittest.TestCase):
         sideRealAngle = starValues[0]
         declination = starValues[1]
         self.assertEquals('7d24.3', declination)
-try:
-            body = values['body']
-            float(body)
-        except ValueError:
-            values['error'] = 'Body is invalid'
-            return values
+
     def test700_050_CorrectSideReal(self):
         sighting = {'op':'predict', 'body':'betelgeuse'}
         starValues = SC.getStar(sighting['body'])
