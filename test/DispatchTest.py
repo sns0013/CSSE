@@ -506,6 +506,21 @@ class DispatchTest(unittest.TestCase):
         sighting = {'op':'predict', 'body':'betelgeuse', 'date':'22-15-aa'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
+
+    def test800_130_wrongthirtyonedays(self):
+        sighting = {'op':'predict', 'body':'betelgeuse', 'date':'2017-04-31'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test800_150_ShouldAddError_wrongfebdays(self):
+        sighting = {'op':'predict', 'body':'betelgeuse', 'date':'2017-02-30'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
+    def test800_160_ShouldAddError_wrongfebdaysleap(self):
+        sighting = {'op':'predict', 'body':'betelgeuse', 'date':'2017-02-29'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 # Sad path
 
 # -----------------------------------------------------------------------
