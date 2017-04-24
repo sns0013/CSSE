@@ -213,10 +213,23 @@ def predict(values):
             return values
         else:
             timeSplit = time.split(':')
+
+            if(len(timeSplit) < 3):
+                values['error'] = 'Time is invalid'
+                return values
+
+            try:
+                hour = int(timeSplit[0])
+                minute = int(timeSplit[1])
+                second = int(timeSplit[2])
+            except ValueError:
+                values['error'] = 'Time is invalid'
+                return values
+
             hour = int(timeSplit[0])
             minute = int(timeSplit[1])
             second = int(timeSplit[2])
-
+            
             if(hour < 0 or hour > 24):
                 values['error'] = 'Time is invalid'
                 return values
