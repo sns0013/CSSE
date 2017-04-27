@@ -365,6 +365,27 @@ def correct(values):
         values['error'] = 'Lat is missing'
         return values
 
+    if 'assumedLat' in values:
+        assumedLat = values['assumedLat']
+        if(not('d' in assumedLat)):
+            values['error'] = 'assumedLat is invalid'
+            return values
+
+        assumedLatSplit = assumedLat.split('d')
+        assumedLatX = int(assumedLatSplit[0])
+        assumedLatYY = float(assumedLatSplit[1])
+
+        if(assumedLatX < -89 or assumedLatX > 89):
+            values['error'] = 'assumedLat is invalid'
+            return values
+
+        if(assumedLatYY < 0.0 or assumedLatYY > 59.9):
+            values['error'] = 'assumedLat is invalid'
+            return values
+    else:
+        values['error'] = 'assumedLat is missing'
+        return values
+
     return values
 
 
