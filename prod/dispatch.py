@@ -20,6 +20,7 @@ def dispatch(values=None):
         predict(values)
         return values    #This calculation is stubbed out
     elif(values['op'] == 'correct'):
+        correct(values)
         return values    #This calculation is stubbed out
     elif(values['op'] == 'locate'):
         return values    #This calculation is stubbed out
@@ -341,6 +342,9 @@ def calculateGHA(AriesGHA, sideRealAngle):
     minutes = float(splitSHA[1])
 
     return AriesGHA + ((minutes / 60) + degrees)
+
+def correct(values):
+    return values
 
 
 
