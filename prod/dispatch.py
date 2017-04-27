@@ -1,6 +1,7 @@
 import math
 import StarCatalog as SC
 import datetime
+#3
 
 def dispatch(values=None):
     #Validate parm
@@ -25,8 +26,9 @@ def dispatch(values=None):
     else:
         values['error'] = 'op is not a legal operation'
         return values
+#21
 
-def adjust(values): #25
+def adjust(values):
 
     if 'observation' in values:
         observation = values['observation']
@@ -122,11 +124,13 @@ def adjust(values): #25
     altitude = calculateAdjustedAltitude(aDip, aRefraction, observation)
     splitAltitude = str(altitude).split('.')
     formatedAltitude = '%d'%(int(splitAltitude[0])) + 'd' + '%.1f'%((altitude - int(splitAltitude[0])) * 60)
-    values['altitude'] = formatedAltitude # 75 + 29 = 104
+    values['altitude'] = formatedAltitude
+#80
 
-def convertToCelcius(temperature): #3
+def convertToCelcius(temperature):
     celcius = (int(temperature) - 32) * (5.0/9.0)
     return celcius
+#3
 
 def calculateDip(horizon, height): #6
     if horizon.lower() == 'natural':
@@ -186,7 +190,7 @@ def predict(values):
             values['error'] = 'Date is invalid'
             return values
         else:
-            dateSplit = date.split('-')
+            dateSplit = date.split('-') #29
             if(len(dateSplit) < 3):
                 values['error'] = 'Date is invalid'
                 return values
@@ -199,11 +203,17 @@ def predict(values):
                 values['error'] = 'Date is invalid'
                 return values
 
-            year = int(dateSplit[0])
+            year = int(dateSplit[0])#30
             month = int(dateSplit[1])
-            day = int(dateSplit[2])
+            day = int(dateSplit[2])#32
 
-            if(day < 1 or day > 31):
+            try:
+                datetime.date(year, month, day)
+            except ValueError:
+                values['error'] = 'Date is invalid'
+                return values
+
+            if(day < 1 or day > 31):#33
                 values['error'] = 'Date is invalid'
                 return values
 
@@ -224,7 +234,7 @@ def predict(values):
             values['error'] = 'Time is invalid'
             return values
         else:
-            timeSplit = time.split(':')
+            timeSplit = time.split(':')#51
 
             if(len(timeSplit) < 3):
                 values['error'] = 'Time is invalid'
@@ -238,7 +248,7 @@ def predict(values):
                 values['error'] = 'Time is invalid'
                 return values
 
-            hour = int(timeSplit[0])
+            hour = int(timeSplit[0])#52
             minute = int(timeSplit[1])
             second = int(timeSplit[2])
 
@@ -256,7 +266,7 @@ def predict(values):
     else:
         time = defaultTime
 
-    cumProg = CalculateCumulativeProgress(date)
+    cumProg = CalculateCumulativeProgress(date)#66
     leapProg = CalculateLeapProg(date)
 
     PM = PMRotation(cumProg, leapProg)
@@ -270,7 +280,7 @@ def predict(values):
     minutes = splitMin[0] + "." + dec[:1]
     formatLongitude = '%d'%(int(splitGHA[0]) % 360) + 'd' + '%.1f'%(float(minutes))
     values['long'] = formatLongitude
-    return values
+    return values #79 - 3b
 
 
 
