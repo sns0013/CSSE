@@ -479,7 +479,7 @@ def correct(values):
     lha = calculatedLHA(values)
     correctedAlt = calculateCorrectAlt(values, lha)
 
-    #calculateCorrectedDistance(values, correctedAlt)
+    calculateCorrectedDistance(values, correctedAlt)
 
     return values
 
@@ -561,7 +561,7 @@ def calculateCorrectedDistance(values, correctedAlt):
 
     correctedDist = round((altValue - correctedAltValue) * 60, 0)
 
-    values['correctedDistance'] = str(correctedDist)
+    values['correctedDistance'] = str(int(correctedDist))
     return correctedDist
 
 
