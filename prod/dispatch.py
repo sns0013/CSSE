@@ -559,10 +559,10 @@ def calculateCorrectedDistance(values, correctedAlt):
 
     correctedAltValue = correctedAltX + correctedAltYY
 
-    correctedDist = altValue - correctedAltValue
+    correctedDist = round((altValue - correctedAltValue) * 60, 0)
 
-
-    return round(correctedDist * 60, 0)
+    values['correctedDistance'] = str(correctedDist)
+    return correctedDist
 
 
 

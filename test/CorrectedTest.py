@@ -279,7 +279,9 @@ class CorrectedTest(unittest.TestCase):
 
 
     def test001_000_correctedAzi_Correct(self):
-        self.assertTrue(True)
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        results = DP.dispatch(sighting)
+        self.assertEquals(results['correctedDistance'], '104')
 
 
     def test001_000_calculatedLHA_Correct(self):
