@@ -479,7 +479,6 @@ def correct(values):
     lha = calculatedLHA(values)
     intermediate = calcInter(values, lha)
     correctedAlt = calculateCorrectAlt(intermediate)
-
     calculateCorrectedDistance(values, correctedAlt)
 
     return values
@@ -568,6 +567,9 @@ def calculateCorrectedDistance(values, correctedAlt):
 
     values['correctedDistance'] = str(int(correctedDist))
     return correctedDist
+
+def calculateCorrectedAzi(values, intermediate):
+    return values
 
 
 
