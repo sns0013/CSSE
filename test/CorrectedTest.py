@@ -262,10 +262,15 @@ class CorrectedTest(unittest.TestCase):
 
 
     def test001_000_correctedDistance_Present(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3', 'correctedDistance':'104'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
+
 
     def test001_000_correctedAzi_Present(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3', 'correctedAzimuth':'od36.8'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
     def test001_000_correctedDistance_Correct(self):
         self.assertTrue(True);

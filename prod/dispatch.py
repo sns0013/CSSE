@@ -351,8 +351,12 @@ def correct(values):
             return values
 
         latSplit = lat.split('d')
-        latX = int(latSplit[0])
-        latYY = float(latSplit[1])
+        try:
+            latX = int(latSplit[0])
+            latYY = float(latSplit[1])
+        except ValueError:
+            values['error'] = 'assumedLong is invalid'
+            return values
 
         if(latX < -89 or latX > 89):
             values['error'] = 'Lat is invalid'
@@ -372,8 +376,12 @@ def correct(values):
             return values
 
         longSplit = long.split('d')
-        longX = int(longSplit[0])
-        longYY = float(longSplit[1])
+        try:
+            longX = int(longSplit[0])
+            longYY = float(longSplit[1])
+        except ValueError:
+            values['error'] = 'long is invalid'
+            return values
 
         if(longX < 0 or longX > 359):
             values['error'] = 'long is invalid'
@@ -394,8 +402,12 @@ def correct(values):
             return values
 
         altitudeSplit = altitude.split('d')
-        altitudeX = int(altitudeSplit[0])
-        altitudeYY = float(altitudeSplit[1])
+        try:
+            altitudeX = int(altitudeSplit[0])
+            altitudeYY = float(altitudeSplit[1])
+        except ValueError:
+            values['error'] = 'altitude is invalid'
+            return values
 
         if(altitudeX < 1 or altitudeX > 89):
             values['error'] = 'altitude is invalid'
@@ -416,8 +428,12 @@ def correct(values):
             return values
 
         assumedLatSplit = assumedLat.split('d')
-        assumedLatX = int(assumedLatSplit[0])
-        assumedLatYY = float(assumedLatSplit[1])
+        try:
+            assumedLatX = int(assumedLatSplit[0])
+            assumedLatYY = float(assumedLatSplit[1])
+        except ValueError:
+            values['error'] = 'assumedLat is invalid'
+            return values
 
         if(assumedLatX < -89 or assumedLatX > 89):
             values['error'] = 'assumedLat is invalid'
@@ -437,8 +453,12 @@ def correct(values):
             return values
 
         assumedLongSplit = assumedLong.split('d')
-        assumedLongX = int(assumedLongSplit[0])
-        assumedLongYY = float(assumedLongSplit[1])
+        try:
+            assumedLongX = int(assumedLongSplit[0])
+            assumedLongYY = float(assumedLongSplit[1])
+        except ValueError:
+            values['error'] = 'assumedLong is invalid'
+            return values
 
         if(assumedLongX < 0 or assumedLongX > 359):
             values['error'] = 'assumedLong is invalid'
