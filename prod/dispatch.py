@@ -365,6 +365,29 @@ def correct(values):
         values['error'] = 'Lat is missing'
         return values
 
+
+    if 'altitude' in values:
+        altitude = values['altitude']
+        if(not('d' in altitude)):
+            values['error'] = 'altitude is invalid'
+            return values
+
+        altitudeSplit = altitude.split('d')
+        altitudeX = int(altitudeSplit[0])
+        altitudeYY = float(altitudeSplit[1])
+
+        if(altitudeX < 1 or altitudeX > 89):
+            values['error'] = 'altitude is invalid'
+            return values
+
+        if(altitudeYY < 0.0 or altitudeYY > 59.9):
+            values['error'] = 'altitude is invalid'
+            return values
+    else:
+        values['error'] = 'altitude is missing'
+        return values
+
+
     if 'assumedLat' in values:
         assumedLat = values['assumedLat']
         if(not('d' in assumedLat)):
