@@ -348,7 +348,7 @@ def correct(values):
     if 'correctedDistance' in values or 'correctedAzimuth' in values:
         values['error'] = 'corrected value already present'
         return values
-    
+
     if 'lat' in values:
         lat = values['lat']
         if(not('d' in lat)):
