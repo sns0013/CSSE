@@ -430,25 +430,25 @@ def correct(values):
         values['error'] = 'assumedLat is missing'
         return values
 
-    if 'long' in values:
-        long = values['long']
-        if(not('d' in long)):
-            values['error'] = 'long is invalid'
+    if 'assumedLong' in values:
+        assumedLong = values['assumedLong']
+        if(not('d' in assumedLong)):
+            values['error'] = 'assumedLong is invalid'
             return values
 
-        longSplit = long.split('d')
-        longX = int(longSplit[0])
-        longYY = float(longSplit[1])
+        assumedLongSplit = assumedLong.split('d')
+        assumedLongX = int(assumedLongSplit[0])
+        assumedLongYY = float(assumedLongSplit[1])
 
-        if(longX < 0 or longX > 359):
-            values['error'] = 'long is invalid'
+        if(assumedLongX < 0 or assumedLongX > 359):
+            values['error'] = 'assumedLong is invalid'
             return values
 
-        if(longYY < 0.0 or longYY > 59.9):
-            values['error'] = 'long is invalid'
+        if(assumedLongYY < 0.0 or assumedLongYY > 59.9):
+            values['error'] = 'assumedLong is invalid'
             return values
     else:
-        values['error'] = 'long is missing'
+        values['error'] = 'assumedLong is missing'
         return values
 
     return values
