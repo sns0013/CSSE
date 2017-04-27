@@ -476,6 +476,9 @@ def correct(values):
         values['error'] = 'assumedLong is missing'
         return values
 
+    lha = calculatedLHA(values)
+    calculateCorrectAlt(values, lha)
+
     return values
 
 def calculatedLHA(values):
@@ -486,14 +489,16 @@ def calculatedLHA(values):
     assumedLongSplit = assumedLong.split('d')
 
     degrees = int(longSplit[0]) + int(assumedLongSplit[0])
-
     minutes = (float(longSplit[1]) + float(assumedLongSplit[1]))/60
-
 
     degrees = degrees + minutes
     degreesSplit = str(degrees).split('.')
     lha = str(int(degreesSplit[0]) % 360) + "d" + str((degrees - float(degreesSplit[0])) * 60)
+
     return lha
+
+def calculateCorrectAlt(values, lha):
+    return values
 
 
 
