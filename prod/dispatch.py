@@ -543,6 +543,8 @@ def calculateCorrectAlt(values, lha):
 
     return correctAltFormat
 
+def correctedDistance(values, correctedAlt):
+    return values
 
 
 

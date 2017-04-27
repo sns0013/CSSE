@@ -294,7 +294,11 @@ class CorrectedTest(unittest.TestCase):
         self.assertEquals(correctAlt, '35d33.3')
 
     def test001_000_calculateCorrectDist_Correct(self):
-        self.assertTrue(True)
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        calculatedLHA = DP.calculatedLHA(sighting)
+        correctAlt = DP.calculateCorrectAlt(sighting, calculatedLHA)
+        correctedDistance = DP.calculateCorrectedDistance(sighting, correctAlt)
+        self.assertEquals(correctedDistance, 104)
 
     def test001_000_calculateCorrectAzi_Correct(self):
         self.assertTrue(True)
