@@ -480,7 +480,7 @@ def correct(values):
     intermediate = calcInter(values, lha)
     correctedAlt = calculateCorrectAlt(intermediate)
     calculateCorrectedDistance(values, correctedAlt)
-
+    calculateCorrectedAzi(values, intermediate)
     return values
 
 def calculatedLHA(values):
@@ -569,7 +569,41 @@ def calculateCorrectedDistance(values, correctedAlt):
     return correctedDist
 
 def calculateCorrectedAzi(values, intermediate):
-    return values
+    assumedLat = values['assumedLat']
+    lat = values['lat']
+
+    assumedLatSplit = assumedLat.split('d')
+    assumedLatX = int(assumedLatSplit[0])
+    assumedLatYY = float(assumedLatSplit[1]) / 60
+
+    if(assumedLatX < 0):
+        assumedLatValue = assumedLatX - assumedLatYY
+    else:
+        assumedLatValue = assumedLatX + assumedLatYY
+
+    latSplit = lat.split('d')
+    latX = int(latSplit[0])
+    latYY = float(latSplit[1]) / 60
+
+    if(latX < 0):
+        latValue = latX - latYY
+    else:
+        latValue = latX + latYY
+
+
+    assumedLatRadians = math.radians(assumedLatValue)
+    latRadians = math.radians(latValue)
+
+    correctedAziRadians = math.acos((math.sin(latRadians) - (math.sin(assumedLatRadians) * intermediate))/(math.cos(assumedLatRadians) * math.cos(math.asin(intermediate))))
+    correctedAziDegrees = math.degrees(correctedAziRadians)
+
+    degreesSplit = str(correctedAziDegrees).split('.')
+    degreesX = int(degreesSplit[0])
+
+    correctedAzi = str(degreesX) + "d" + str(round((correctedAziDegrees - degreesX) * 60, 1))
+
+    values['correctedAzimuth'] = correctedAzi
+    return correctedAzi
 
 
 

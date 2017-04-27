@@ -283,7 +283,7 @@ class CorrectedTest(unittest.TestCase):
     def test001_000_correctedAzi_Correct(self):
         sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         results = DP.dispatch(sighting)
-        self.assertEquals(results['correctedAzimuth'], '104')
+        self.assertEquals(results['correctedAzimuth'], '0d36.8')
 
 
     def test001_000_calculatedLHA_Correct(self):
@@ -312,7 +312,7 @@ class CorrectedTest(unittest.TestCase):
         intermediate = DP.calcInter(sighting, calculatedLHA)
         correctAlt = DP.calculateCorrectAlt(intermediate)
         correctedDistance = DP.calculateCorrectedDistance(sighting, correctAlt)
-        correctedAzi = DP.calculateCorrectedAzi(intermediate)
+        correctedAzi = DP.calculateCorrectedAzi(sighting, intermediate)
         self.assertEquals(correctedAzi, '0d36.8')
 
 
