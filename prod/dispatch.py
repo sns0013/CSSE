@@ -477,7 +477,9 @@ def correct(values):
         return values
 
     lha = calculatedLHA(values)
-    calculateCorrectAlt(values, lha)
+    correctedAlt = calculateCorrectAlt(values, lha)
+
+    #calculateCorrectedDistance(values, correctedAlt)
 
     return values
 
@@ -543,8 +545,24 @@ def calculateCorrectAlt(values, lha):
 
     return correctAltFormat
 
-def correctedDistance(values, correctedAlt):
-    return values
+def calculateCorrectedDistance(values, correctedAlt):
+    altitude = values['altitude']
+    altitudeSplit = altitude.split('d')
+    altitudeX= int(altitudeSplit[0])
+    altitudeYY= float(altitudeSplit[1]) / 60
+
+    altValue = altitudeX + altitudeYY
+
+    correctedAltSplit = correctedAlt.split('d')
+    correctedAltX= int(correctedAltSplit[0])
+    correctedAltYY= float(correctedAltSplit[1]) / 60
+
+    correctedAltValue = correctedAltX + correctedAltYY
+
+    correctedDist = altValue - correctedAltValue
+
+
+    return round(correctedDist * 60, 0)
 
 
 
