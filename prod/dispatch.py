@@ -477,7 +477,8 @@ def correct(values):
         return values
 
     lha = calculatedLHA(values)
-    correctedAlt = calculateCorrectAlt(values, lha)
+    intermediate = calcInter(values, lha)
+    correctedAlt = calculateCorrectAlt(intermediate)
 
     calculateCorrectedDistance(values, correctedAlt)
 
@@ -499,7 +500,7 @@ def calculatedLHA(values):
 
     return lha
 
-def calculateCorrectAlt(values, lha):
+def calcInter(values, lha):
     assumedLat = values['assumedLat']
     lat = values['lat']
 
@@ -533,6 +534,10 @@ def calculateCorrectAlt(values, lha):
     lhaRadians = math.radians(lhaValue)
 
     intermediate = (math.sin(latRadians) * math.sin(assumedLatRadians)) + (math.cos(latRadians) * math.cos(assumedLatRadians) * math.cos(lhaRadians))
+
+    return intermediate
+
+def calculateCorrectAlt(intermediate):
 
 
     correctAlt = math.asin(intermediate)
