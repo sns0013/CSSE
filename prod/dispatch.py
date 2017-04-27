@@ -365,6 +365,27 @@ def correct(values):
         values['error'] = 'Lat is missing'
         return values
 
+    if 'long' in values:
+        long = values['long']
+        if(not('d' in long)):
+            values['error'] = 'long is invalid'
+            return values
+
+        longSplit = long.split('d')
+        longX = int(longSplit[0])
+        longYY = float(longSplit[1])
+
+        if(longX < 0 or longX > 359):
+            values['error'] = 'long is invalid'
+            return values
+
+        if(longYY < 0.0 or longYY > 59.9):
+            values['error'] = 'long is invalid'
+            return values
+    else:
+        values['error'] = 'long is missing'
+        return values
+
 
     if 'altitude' in values:
         altitude = values['altitude']
