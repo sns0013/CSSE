@@ -478,6 +478,23 @@ def correct(values):
 
     return values
 
+def calculatedLHA(values):
+    long = values['long']
+    assumedLong = values['assumedLong']
+
+    longSplit = long.split('d')
+    assumedLongSplit = assumedLong.split('d')
+
+    degrees = int(longSplit[0]) + int(assumedLongSplit[0])
+
+    minutes = (float(longSplit[1]) + float(assumedLongSplit[1]))/60
+
+
+    degrees = degrees + minutes
+    degreesSplit = str(degrees).split('.')
+    lha = str(int(degreesSplit[0]) % 360) + "d" + str((degrees - float(degreesSplit[0])) * 60)
+    return lha
+
 
 
 
