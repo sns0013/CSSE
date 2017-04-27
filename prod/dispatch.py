@@ -344,6 +344,27 @@ def calculateGHA(AriesGHA, sideRealAngle):
     return AriesGHA + ((minutes / 60) + degrees)
 
 def correct(values):
+    if 'lat' in values:
+        lat = values['lat']
+        if(not('d' in lat)):
+            values['error'] = 'Lat is invalid'
+            return values
+
+        latSplit = lat.split('d')
+        latX = int(latSplit[0])
+        latYY = float(latSplit[1])
+
+        if(latX < -89 or latX > 89):
+            values['error'] = 'Lat is invalid'
+            return values
+
+        if(latYY < 0.0 or latYY > 59.9):
+            values['error'] = 'Lat is invalid'
+            return values
+    else:
+        values['error'] = 'Lat is missing'
+        return values
+
     return values
 
 

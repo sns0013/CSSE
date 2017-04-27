@@ -5,52 +5,52 @@ import prod.StarCatalog as SC
 
 class CorrectedTest(unittest.TestCase):
     def test001_001_lat_LBX(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'-89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test001_002_lat_HBX(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test001_003_lat_NX(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'65d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test001_004_lat_EX(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'100d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test001_005_lat_LBY(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'89d0.0', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test001_006_lat_HBY(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'89d59.9', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test001_007_lat_NY(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue(not 'error' in result)
 
     def test001_008_lat_EY(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'89d61.0', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test001_009_lat_Missing(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
     def test001_010_lat_IncorrectFormat(self):
-        sighting = {'op':'corrected', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        sighting = {'op':'correct', 'lat':'8920.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
         result = DP.dispatch(sighting)
         self.assertTrue('error' in result)
 
