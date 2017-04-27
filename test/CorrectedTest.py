@@ -118,34 +118,54 @@ class CorrectedTest(unittest.TestCase):
 
 
     def test001_000_assLat_LBX(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'-89d59.7', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
     def test001_000_assLat_HBX(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'89d59.7', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
     def test001_000_assLat_NX(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.7', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
     def test001_000_assLat_EX(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'105d59.7', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
     def test001_000_assLat_LBY(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d0.0', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
     def test001_000_assLat_HBY(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d59.9', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
     def test001_000_assLat_NY(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d40.1', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue(not 'error' in result)
 
     def test001_000_assLat_EY(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'35d356', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
     def test001_000_assLat_Missing(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
     def test001_000_assLat_IncorrectFormat(self):
-        self.assertTrue(True);
+        sighting = {'op':'correct', 'lat':'89d20.1', 'long':'154d5.4', 'altitude':'37d17.4', 'assumedLat':'3559.7', 'assumedLong':'74d35.3'}
+        result = DP.dispatch(sighting)
+        self.assertTrue('error' in result)
 
 
     def test001_000_assLong_LBX(self):
