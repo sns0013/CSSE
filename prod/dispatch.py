@@ -493,12 +493,56 @@ def calculatedLHA(values):
 
     degrees = degrees + minutes
     degreesSplit = str(degrees).split('.')
-    lha = str(int(degreesSplit[0]) % 360) + "d" + str((degrees - float(degreesSplit[0])) * 60)
+    lha = str(int(degreesSplit[0]) % 360) + "d" + str(round((degrees - float(degreesSplit[0])) * 60, 1))
 
     return lha
 
 def calculateCorrectAlt(values, lha):
-    return values
+    assumedLat = values['assumedLat']
+    lat = values['lat']
+
+    lhaSplit = lha.split('d')
+    lhaX = int(lhaSplit[0])
+    lhaYY = float(lhaSplit[1]) / 60
+
+    lhaValue = lhaX + lhaYY
+
+    assumedLatSplit = assumedLat.split('d')
+    assumedLatX = int(assumedLatSplit[0])
+    assumedLatYY = float(assumedLatSplit[1]) / 60
+
+    if(assumedLatX < 0):
+        assumedLatValue = assumedLatX - assumedLatYY
+    else:
+        assumedLatValue = assumedLatX + assumedLatYY
+
+    latSplit = lat.split('d')
+    latX = int(latSplit[0])
+    latYY = float(latSplit[1]) / 60
+
+    if(latX < 0):
+        latValue = latX - latYY
+    else:
+        latValue = latX + latYY
+
+
+    assumedLatRadians = math.radians(assumedLatValue)
+    latRadians = math.radians(latValue)
+    lhaRadians = math.radians(lhaValue)
+
+    intermediate = (math.sin(latRadians) * math.sin(assumedLatRadians)) + (math.cos(latRadians) * math.cos(assumedLatRadians) * math.cos(lhaRadians))
+
+
+    correctAlt = math.asin(intermediate)
+    correctAlt = math.degrees(correctAlt)
+
+    correctAltSplit = str(correctAlt).split('.')
+    degrees = int(correctAltSplit[0])
+
+    correctAltFormat = str(degrees % 360) + "d" + str(round((correctAlt - degrees) * 60, 1))
+
+    return correctAltFormat
+
 
 
 
