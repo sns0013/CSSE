@@ -315,6 +315,35 @@ class CorrectedTest(unittest.TestCase):
         correctedAzi = DP.calculateCorrectedAzi(sighting, intermediate)
         self.assertEquals(correctedAzi, '0d36.8')
 
+    def test001_002_calculatedLHA_Correct(self):
+        sighting = {'op':'correct', 'lat':'16d32.3', 'long':'95d41.6', 'altitude':'13d42.3', 'assumedLat':'-53d38.4', 'assumedLong':'74d35.3'}
+        calculatedLHA = DP.calculatedLHA(sighting)
+        self.assertEquals(calculatedLHA, '170d16.9')
+
+    def test001_002_calculateCorrectAlt_Correct(self):
+        sighting = {'op':'correct', 'lat':'16d32.3', 'long':'95d41.6', 'altitude':'13d42.3', 'assumedLat':'-53d38.4', 'assumedLong':'74d35.3'}
+        calculatedLHA = DP.calculatedLHA(sighting)
+        intermediate = DP.calcInter(sighting, calculatedLHA)
+        correctAlt = DP.calculateCorrectAlt(intermediate)
+        self.assertEquals(correctAlt, '-52d7.8')
+
+    def test001_002_calculateCorrectDist_Correct(self):
+        sighting = {'op':'correct', 'lat':'16d32.3', 'long':'95d41.6', 'altitude':'13d42.3', 'assumedLat':'-53d38.4', 'assumedLong':'74d35.3'}
+        calculatedLHA = DP.calculatedLHA(sighting)
+        intermediate = DP.calcInter(sighting, calculatedLHA)
+        correctAlt = DP.calculateCorrectAlt(intermediate)
+        correctedDistance = DP.calculateCorrectedDistance(sighting, correctAlt)
+        self.assertEquals(correctedDistance, 3950)
+
+    def test001_002_calculateCorrectAzi_Correct(self):
+        sighting = {'op':'correct', 'lat':'16d32.3', 'long':'95d41.6', 'altitude':'13d42.3', 'assumedLat':'-53d38.4', 'assumedLong':'74d35.3'}
+        calculatedLHA = DP.calculatedLHA(sighting)
+        intermediate = DP.calcInter(sighting, calculatedLHA)
+        correctAlt = DP.calculateCorrectAlt(intermediate)
+        correctedDistance = DP.calculateCorrectedDistance(sighting, correctAlt)
+        correctedAzi = DP.calculateCorrectedAzi(sighting, intermediate)
+        self.assertEquals(correctedAzi, '164d42.9')
+
 
 
 

@@ -544,8 +544,11 @@ def calculateCorrectAlt(intermediate):
 
     correctAltSplit = str(correctAlt).split('.')
     degrees = int(correctAltSplit[0])
+    if(degrees < 0):
+        correctAltFormat = "-" + str(abs(degrees) % 360) + "d" + str(round((abs(correctAlt) - abs(degrees)) * 60, 1))
+    else:
+        correctAltFormat = str(abs(degrees) % 360) + "d" + str(round((abs(correctAlt) - abs(degrees)) * 60, 1))
 
-    correctAltFormat = str(degrees % 360) + "d" + str(round((correctAlt - degrees) * 60, 1))
 
     return correctAltFormat
 
@@ -560,8 +563,10 @@ def calculateCorrectedDistance(values, correctedAlt):
     correctedAltSplit = correctedAlt.split('d')
     correctedAltX= int(correctedAltSplit[0])
     correctedAltYY= float(correctedAltSplit[1]) / 60
-
-    correctedAltValue = correctedAltX + correctedAltYY
+    if(correctedAltX < 0):
+        correctedAltValue = correctedAltX - correctedAltYY
+    else:
+        correctedAltValue = correctedAltX + correctedAltYY
 
     correctedDist = round((altValue - correctedAltValue) * 60, 0)
 
